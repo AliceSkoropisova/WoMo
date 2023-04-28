@@ -1,0 +1,45 @@
+@import url('dycalendar.css');
+
+.calendar{
+    position: fixed;
+    width: 375px;
+    height: 375px;
+    left: 1410px;
+    top: 50px;
+    background: #F7E7FF;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#dycalendar, .dycalendar-month-container, .dycalendar-header, .dycalendar-body, .dycalendar-prev-next-btn{
+    background: transparent;
+}
+#dycalendar span{
+    background: transparent;
+}
+#dycalendar table td{
+    background: #cc89eb;
+    border-radius: 5px;
+    
+}
+#dycalendar {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    margin-top: 10px;    
+}
+.calendar #dycalendar{
+    width: 100%;
+    padding: 20px;
+}
+#dycalendar table{
+    width: 100%;
+    background: transparent;
+}
+#dycalendar .dycalendar-target-date{
+    color: #e6deed;
+    background: #621b83;
+} 
+
