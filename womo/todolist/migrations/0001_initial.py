@@ -19,7 +19,6 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('delo', models.CharField(help_text='Введите дело', max_length=40, verbose_name='Дело')),
                 ('importance', models.CharField(choices=[('I', 'Важно'), ('M', 'Средне'), ('N', 'Не важно')], default='I', max_length=8)),
-                ('user_id', models.ForeignKey(help_text='Введите id', on_delete=django.db.models.deletion.CASCADE, to='registration.user', verbose_name='ID')),
             ],
         ),
     ]
