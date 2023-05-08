@@ -32,7 +32,7 @@ body{
     line-height: 75px;
     color: #2E1949;
 }
-.date{
+.date__header{
     position: absolute;
     height: 56px;
     left: 510px;

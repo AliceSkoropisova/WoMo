@@ -14,7 +14,7 @@
             <img src="{% static 'img/backgroud_menu.jpg' %}" alt="Фиолетовый фон под меню">
         </div>
         <div class="image-stack__item avatar">
-            <img src="{% static 'img/avatar.jpg' %}" alt="Собачка на автарку">
+            <img src="{% static 'img/avatar.jpg'%}" alt="Собачка на автарку">
         </div>
         <!-- основное меню -->
         <ul class="menu__list list">
@@ -22,25 +22,25 @@
             <li class="menu__item item">
                 <!-- ссылка меню -->
                 <a href="#1" class="menu__link link">
-                    <img src="{% static 'img/arms_up.svg' %}" alt="иконка профиля">
+                    <img src="{% static 'img/arms_up.svg'%}" alt="иконка профиля">
                     <span>Мой день</span>
                 </a>                    
             </li>
             <li class="menu__item item">
                 <a href="#2" class="menu__link link">
-                    <img src="{% static 'img/calendar.svg' %}" alt="иконка календаря">
+                    <img src="{% static 'img/calendar.svg'%}" alt="иконка календаря">
                     <span>Календарь</span>
                 </a>
             </li>
             <li class="menu__item item">
                 <a href="#3" class="menu__link link">
-                    <img src="{% static 'img/goal.svg' %}" alt="иконка целей">
+                    <img src="{% static 'img/goal.svg'%}" alt="иконка целей">
                     <span>Цели</span>
                 </a>                    
             </li>
             <li class="menu__item item">
                 <a href="#4" class="menu__link link">
-                    <img src="{% static 'img/notes.svg' %}" alt="иконка заметок">
+                    <img src="{% static 'img/notes.svg'%}" alt="иконка заметок">
                     <span>Заметки</span>
                 </a>
             </li>
@@ -52,25 +52,35 @@
             <span>О нас</span>
         </a>
     </section>
+
+    <h1 class="title">Планы на сегодня</h1>
+
     <section class="content">
-        <h1 class="title">Планы на сегодня</h1>
-        <span class="date">Март 19, 2023</span>
+        <!-- <h1 class="title">Планы на сегодня</h1> -->
+        <span class="date__header">Март 19, 2023</span>
         <a href="#4" class="turn__date-left">
-            <img src="{% static 'img/left_paging.svg' %}" alt="">
+            <img src="{% static 'img/left_paging.svg'%}" alt="">
         </a>
         <a href="#4" class="turn__date-right">
-            <img src="{% static 'img/right_paging.svg' %}" alt="">
+            <img src="{% static 'img/right_paging.svg'%}" alt="">
         </a>
-        <span class="note__text">Заметки</span>
+        <!-- <span class="note__text">Заметки</span>
         <span class="goal__text">Цели</span>
-        <img src="{% static 'img/notes.jpg' %}" alt="" class="notes">
-        <img src="{% static 'img/goal.jpg' %}" alt="" class="goals">
+        <img src="img/notes.jpg" alt="" class="notes">
+        <img src="img/goal.jpg" alt="" class="goals"> -->
     </section>
+
+    <span class="note__text">Заметки</span>
+    <span class="goal__text">Цели</span>
+    <img src="{% static 'img/notes.jpg'%}" alt="" class="notes">
+    <img src="{% static 'img/goal.jpg'%}" alt="" class="goals">
+
+
     <section class = "create__notes">
         <div class="input__text">
             <input type="text" class="add__text" placeholder="Почаще улыбаться :)"/>
             <a href="#5" class="btn__add_note">
-                <img src="{% static 'img/add_note.svg' %}" alt="" class="add__note">
+                <img src="{% static 'img/add_note.svg'%}" alt="" class="add__note">
             </a>
         </div>
         <div class="wrapper">
@@ -78,8 +88,8 @@
         </div>
     </section>
     <div class="calendar">
-           <div id="dycalendar"></div> 
-           <script src="{% static 'js/dycalendar.js' %}"></script>
+           <div id="dycalendar"></div>
+           <script src="{% static 'js/dycalendar.js'%}"></script>
            <script>
                 dycalendar.draw({
                     target: '#dycalendar',
@@ -88,11 +98,13 @@
                     monthformat: 'full',
                     highlighttargetdate: true,
                     prevnextbutton: 'show'
-                })
+                });
+                
            </script>
-
+           <script src="{% static 'js/calendarButtons.js'%}"></script>
     </div>
     <!-- js include -->
-    <script src="{% static 'js/my_day.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/my_day.js'%}"></script>
 </body>
 </html>

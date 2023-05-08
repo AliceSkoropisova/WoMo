@@ -22,6 +22,7 @@ from todolist import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    #path('', views.index, name='index'),
+    path('', views.add_delo, name = 'add_delo'),
     #path('registration/', views.register, name='register')
 ]
