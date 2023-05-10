@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
@@ -15,3 +16,7 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Пароли не совпадают')
         return cd['password2']
+
+class RegisterForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User

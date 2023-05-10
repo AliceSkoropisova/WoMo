@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>WoMo</title>
+<body>
+    <h1 class="mainHeader">Привет!</h1>
+    <div class="inscriptions">
+        <span class="need_to_login">Для начала работы необходимо войти в аккаунт</span>
+        <a class="registration" href="{% url 'registration:register' %}">Еще не создали аккаунт? Зарегистрируйтесь!</a>
+    </div>
+
+    <form class="box" action="login.html" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn__login" value="Войти"/>
+        <!-- <button class="btn__login">Войти</button> -->
+        <div class="data__entry">
+            <span class="span__login">Логин</span>
+            <span class="span__password">Пароль</span>
+            <div class="input__text">
+                <input type="text" class="entry_login" placeholder="Введите логин..."/>
+                <input type="password" class="entry_password" placeholder="Введите пароль..."/>
+            </div>   
+        </div>
+    </form>
+</body>
+</html>
