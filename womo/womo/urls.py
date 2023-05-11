@@ -19,11 +19,14 @@ from django.urls import path
 from django.urls import path, include
 from todolist import views
 
+app_name = "womo"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', views.index, name='index'),
-    path('', views.add_delo, name = 'add_delo'),
+    #path('home/', views.add_delo, name = 'add_delo'),
     #path('', include('notes.urls')),
     path('', include('registration.urls')),
+    path('', include('todolist.urls')),
     #path('registration/', views.register, name='register')
 ]

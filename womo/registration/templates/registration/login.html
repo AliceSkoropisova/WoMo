@@ -14,18 +14,19 @@
         <a class="registration" href="{% url 'registration:register' %}">Еще не создали аккаунт? Зарегистрируйтесь!</a>
     </div>
 
-    <form class="box" action="login.html" method="post">
+    <form class="box"  method="post">
         {% csrf_token %}
-        <input type="submit" class="btn__login" value="Войти"/>
+        <input type="submit" class="btn__login" href="{% url 'todolist:add_delo' %}" value="Войти"/>
         <!-- <button class="btn__login">Войти</button> -->
         <div class="data__entry">
             <span class="span__login">Логин</span>
             <span class="span__password">Пароль</span>
             <div class="input__text">
-                <input type="text" class="entry_login" placeholder="Введите логин..."/>
-                <input type="password" class="entry_password" placeholder="Введите пароль..."/>
+                <input type="text" class="entry_login" name="username" placeholder="Введите логин..."/>
+                <input type="password" class="entry_password" name="password" placeholder="Введите пароль..."/>
             </div>   
         </div>
+        {{ form.errors }}
     </form>
 </body>
 </html>
