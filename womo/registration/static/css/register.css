@@ -67,7 +67,7 @@ body{
     position: absolute;
     width: 765px;
     left: calc(50% - 765px/2 + 87.5px);
-    top: 403px;
+    top: 200px;
     display: flex;
     flex-direction: column;
     gap: 32px; 

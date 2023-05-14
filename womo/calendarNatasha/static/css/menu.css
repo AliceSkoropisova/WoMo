@@ -1,0 +1,92 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 15%;/*375*/
+    height: 93%;/*1000*/
+    position: fixed;
+    top: 5%;/*54*/
+    left: 0;
+}
+.menu .menu__wallpaper img{
+    position: fixed;
+    width: 422px;/*422*/
+    height: 1000px;/*1000*/
+    left: -87px;/*-47*/
+    top: 50px;
+    border-radius: 20px;/*20*/
+}
+.menu .avatar img{
+    position: absolute;
+    width: 170px;/*170*/
+    height: 170px;/*170*/
+    left: 71px;/*101*/
+    top: 71px; /*71*/
+    border-radius: 50%;   /*50%*/
+}
+.menu__link{
+    margin-left: 66px;/*86*/
+    background: none;
+}
+.link{
+    position: relative;
+    display: flex;
+    height: 42px;/*42*/
+		top: 50px;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+.link > img{
+    width: 48px;/*48*/
+    height: 48px;/*48*/
+    margin-right: 9%;/*37*/
+    background: none;
+}
+.link >span{
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 36px;/*36*/
+    line-height: 42px;/**/
+    color: #FFFFFF;
+    background: none;
+}
+.list{
+    margin-top: 80%;/*331*/
+		margin-left: 1%;
+    padding: 0;
+    list-style-position: inside;
+}
+.item{
+    margin-bottom: 5%;/*48*/
+}
+.link:hover, .link__me:hover, .link__about:hover{
+    opacity: 0.7;
+}
+.link__me >span{
+    position: absolute;
+    width: 5%;/*23*/
+    height: 4%;/*42*/
+    left: 151px;/*171*/
+    top: 26%; /*261*/
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;/*36*/
+    line-height: 42px;
+    color: #FFFFFF;
+    background: none;
+}
+.link__about >span{
+    position: absolute;
+    height: 4%;/*42*/
+    left: 121px;/*141*/
+    top: 93%;/*961*/
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 36px;/*36*/
+    line-height: 42px;
+    color: #ffffff;
+    background: none;
+}
+

@@ -19,7 +19,6 @@ from django.urls import path
 from django.urls import path, include
 from todolist import views
 
-app_name = "womo"
 
 urlpatterns = [
     path('admin/', admin.site.urls),

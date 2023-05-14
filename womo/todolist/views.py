@@ -1,8 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import ToDoList
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
+
+@login_required
 def add_delo(request):
     delo = ''
     if request.POST.get('action') == 'post':
@@ -12,6 +15,7 @@ def add_delo(request):
         month = str(int(request.POST.get('month')) + 1)
         year = request.POST.get('year')
         user_id = request.POST.get('user_id')
+        print(user_id)
         user = User.objects.get(id=user_id)
         todo_instance = ToDoList.objects.create(user = user, todo = delo, important = importance, day = day, month = month, year = year)
         return JsonResponse('Delo is written', safe=False)
