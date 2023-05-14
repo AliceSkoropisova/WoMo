@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <title>WoMo</title>
+</head>
+<body>
+    <h1 class="mainHeader">Регистрация</h1>
+    <span class="choose__photo">Выберите фото профиля!</span>
+
+    <form class="box"  method="post" >
+        {% csrf_token %}
+            <a class="button_cancel" href="{% url 'todolist:add_delo' %}">Отмена</a>
+            <input type="submit" class="btn__createAcc" href="{% url 'todolist:add_delo' %}" value="Создать аккаунт"/>
+        <div class="data__entry">
+            <div class="descriptions">
+                <span class="span__name">Имя</span>
+                <span class="span__surname">Фамилия</span>
+                <span class="span__login">Логин</span>
+                <span class="span__password">Пароль</span>
+            </div>
+            <div class="input__text">
+                <input type="text" class="entry_name" name="username" placeholder="Введите имя..."/>
+                <input type="text" class="entry_surname" name="surname" placeholder="Введите фамилию..."/>
+                <input type="text" class="entry_login" name="login" placeholder="Введите логин..."/>
+                <input type="password" class="entry_password" name="password1" placeholder="Введите пароль..."/>
+                <input type="password" class="entry_password" name="password2" placeholder="Подтвердите пароль..."/>
+            </div>   
+        </div>
+        {{ form.errors }}
+    </form>
+
+</body>
+</html>

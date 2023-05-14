@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>WoMo App</title>
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+	<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/add.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{% static 'css/newmonth.css' %}">
+</head>
+<body>
+	<section class="menu">
+		<div class="image-stack__item menu__wallpaper">
+				<img src="{% static 'img/backgroud_menu.jpg'%}" alt="Фиолетовый фон под меню">
+		</div>
+		<div class="image-stack__item avatar">
+				<img src="{% static 'img/avatar.jpg'%}" alt="Собачка на автарку">
+		</div>
+		<ul class="menu__list list">
+				<li class="menu__item item">
+						<a href="#1" class="menu__link link">
+								<img src="{% static 'img/arms_up.svg'%}" alt="иконка профиля">
+								<span>Профиль</span>
+						</a>                    
+				</li>
+				<li class="menu__item item">
+						<a href="#2" class="menu__link link">
+								<img src="{% static 'img/calendar.svg'%}" alt="иконка календаря">
+								<span>Календарь</span>
+						</a>
+				</li>
+				<li class="menu__item item">
+						<a href="#3" class="menu__link link">
+								<img src="{% static 'img/goal.svg'%}" alt="иконка целей">
+								<span>Цели</span>
+						</a>                    
+				</li>
+				<li class="menu__item item">
+						<a href="#4" class="menu__link link">
+								<img src="{% static 'img/notes.svg'%}" alt="иконка заметок">
+								<span>Заметки</span>
+						</a>
+				</li>
+		</ul>
+		<a href="#" class="link__me">
+				<span>Я</span>
+		</a>
+		<a href="#" class="link__about">
+				<span>О нас</span>
+		</a>
+	</section>
+	<section class="section-main-part">
+		<header class="main-header-block">
+			<div id="monthDisplay">
+			</div>
+			<div class="rectangle1">
+				<a href="#" class="rectangle1__week">неделя</a>
+			</div>
+			<div class="rectangle2">
+				<a href="month.html" class="rectangle2__month">месяц</a>
+			</div>
+			<div class="buttons-throw">
+				<button id="backButton"></button>
+				<button id="nextButton"></button>
+			</div>
+		</header>
+		<main class="main-main-block">
+			<div class="left">
+				<div class="calendar">
+				<div class="weekdays">
+					<div>ПН</div>
+					<div>ВТ</div>
+					<div>СР</div>
+					<div>ЧТ</div>
+					<div>ПТ</div>
+					<div>СБ</div>
+					<div>ВС</div>
+				</div>
+					
+					<div class="days">
+					</div>
+					<div class="goto-today">
+						<div class="goto">
+							<input type="text" placeholder="мм/гггг" class="date-input">
+							<button class="goto-btn">найти</button>
+						</div>
+						<button class="today-btn">сегодня</button>
+					</div>
+				</div>
+				</div>
+				<div class="right">
+					<div class="today-date">
+						<div class="event-day"></div>
+						<div class="event-date"></div>
+					</div>
+					<div class="events"></div>
+					<div class="add-event-wrapper">
+						<div class="add-event-header">
+							<div class="title">Дело</div>
+							<i class="gg-close-o close"></i>
+						</div>
+						<div class="add-event-body">
+							<div class="add-event-input">
+								<input type="text" placeholder="Помыть полы..." class="event-name" />
+							</div>
+						</div>
+						<div class="add-event-footer">
+							<button class="add-event-btn">Добавить!</button>
+						</div>
+					</div>
+				</div>
+				<button class="add-event">
+					<i class="gg-ad"></i>
+				</button>
+			
+				
+		</main>
+	</section>
+	<!-- <script src="./js/script.js"> </script> -->
+	<script src="{% static 'js/month.js'%}"> </script>
+</body>
+</html>

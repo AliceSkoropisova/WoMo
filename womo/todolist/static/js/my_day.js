@@ -4,7 +4,7 @@ todo = document.querySelector('.todo');
 
 let todoList = [];
 
-ID = 2;
+
 
 function getCookie(cname) {
      name = cname + "=";

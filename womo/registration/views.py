@@ -1,14 +1,27 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.urls import reverse_lazy
+from django.views.generic import FormView
+from django.contrib.auth import logout
+from .form import RegisterForm
+app_name = "registration"
 
-def log_in(request):
-    if request.POST.get('action') == 'login':
-        login = request.POST.get('login')
-        password = request.POST.get('password')
-        if User.filter(username = login, password = password).exists():
-            redirect('')
-            return JsonResponse('OK', safe=False)
-        return JsonResponse('No', safe=False)
-    return render(request, 'log_in.html')
-# Create your views here.
+
+def logout_view(request):
+    logout(request)
+    return redirect('registration:login')
+
+
+@login_required
+def profile_view(request):
+    return render(request, 'profile/profile.html')
+
+
+class RegisterView(FormView):
+    form_class = RegisterForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy("todolist:add_delo")
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
