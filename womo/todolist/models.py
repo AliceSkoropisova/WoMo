@@ -10,6 +10,7 @@ class ToDoList(models.Model):
     todo = models.CharField(max_length = 40,
                             help_text = "Введите дело",
                             verbose_name = "Дело")
+    checked = models.CharField(max_length = 5, verbose_name = "Сделано", default = 'false')
     important = models.CharField(max_length = 5, verbose_name = "Важность")
     day = models.CharField(max_length = 5, verbose_name = "День")
     month= models.CharField(max_length = 5, verbose_name = "Месяц")

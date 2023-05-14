@@ -421,7 +421,6 @@ function getCalendar(year, month, date) {
     result.targetedDayName = dateString[0];
     result.targetedDayFullName = dayName.full[idx];
 
-
     return result;
 }
 
@@ -432,6 +431,15 @@ rightPagigng.addEventListener('click', function(){
 
     let monthDisplay = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
+    //let spl = dateHeader.textContent.split(' ');
+    //for (let i = 0; i < 12; i++){
+      // if (monthDisplay[i].toString() === spl[0].toString()){
+        //    monthF = i;
+          //   i = 13;
+       //}
+    //}
+    
+    
     let optionPaging = {
         target: "#dycalendar",
         type: "month",
@@ -512,9 +520,7 @@ rightPagigng.addEventListener('click', function(){
             }
         }    
     }
-
     displayMessages();
-
 });
 
 //------------------------------ листаем дату влево ----------------------
@@ -605,9 +611,7 @@ leftPagigng.addEventListener('click', function(){
             }
         }    
     }
-
     displayMessages();
-
 });
 
 
@@ -765,7 +769,5 @@ tbody.addEventListener('click', function (e) {
             }
         }
     }
-
     displayMessages();
-
 });

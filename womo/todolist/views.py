@@ -8,16 +8,17 @@ def add_delo(request):
     if request.POST.get('action') == 'post':
         delo = request.POST.get('delo')
         importance = request.POST.get('importance')
+        checked = request.POST.get('checked')
         day = request.POST.get('day')
         month = str(int(request.POST.get('month')) + 1)
         year = request.POST.get('year')
         user_id = request.POST.get('user_id')
         user = User.objects.get(id=user_id)
-        todo_instance = ToDoList.objects.create(user = user, todo = delo, important = importance, day = day, month = month, year = year)
+        todo_instance = ToDoList.objects.create(user = user, todo = delo, important = importance, day = day, month = month, year = year, checked = checked)
         return JsonResponse('Delo is written', safe=False)
     elif request.method == 'GET' and request.GET.get('action') == 'get':
         data = ToDoList.objects.filter(user = request.GET.get('user_id'), day = request.GET.get('day'), month = str(int(request.GET.get('month')) + 1), year = request.GET.get('year'))
-        dela = data.values('todo', 'important')
+        dela = data.values('todo', 'important', 'checked')
         data = {
             'data': list(dela)
         }
@@ -47,5 +48,22 @@ def add_delo(request):
         change = ToDoList.objects.get(user = user, todo = delo, important = importance, day = day, month = month, year = year)
         change.delete()
         return JsonResponse('Deleted', safe=False)
+    elif request.method == 'POST' and request.POST.get('action') == 'change checked':
+        delo = request.POST.get('delo')
+        importance = request.POST.get('importance')
+        day = request.POST.get('day')
+        month = str(int(request.POST.get('month')) + 1)
+        year = request.POST.get('year')
+        user_id = request.POST.get('user_id')
+        user = User.objects.get(id=user_id)
+        change = ToDoList.objects.get(user=user, todo=delo, important=importance, day=day, month=month, year=year)
+        if change.checked == 'false':
+            print("fuck)")
+            change.checked = 'true'
+        else:
+            change.checked = 'false'
+        change.save()
+        print(change.checked)
+        return JsonResponse('OK', safe=False)
     return render(request, 'index.html')
 

@@ -5,4 +5,4 @@ class ToDoListInline(admin.TabularInline):
     model = ToDoList
 @admin.register(ToDoList)
 class ToDoListAdmin(admin.ModelAdmin):
-    list_display = ('user', 'todo', 'important', 'day', 'month', 'year')
+    list_display = ('user', 'todo', 'important', 'day', 'month', 'year', 'checked')

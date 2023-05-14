@@ -1,19 +1,14 @@
-from django.shortcuts import render
-from .form import UserRegistrationForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 
-
-def register(request):
-    if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
-            new_user = user_form.save(commit=False)
-            # Set the chosen password
-            new_user.set_password(user_form.cleaned_data['password'])
-            # Save the User object
-            new_user.save()
-            return render(request, 'register_done.html', {'new_user': new_user})
-    else:
-        user_form = UserRegistrationForm()
-    return render(request, 'register.html', {'user_form': user_form})
+def log_in(request):
+    if request.POST.get('action') == 'login':
+        login = request.POST.get('login')
+        password = request.POST.get('password')
+        if User.filter(username = login, password = password).exists():
+            redirect('')
+            return JsonResponse('OK', safe=False)
+        return JsonResponse('No', safe=False)
+    return render(request, 'log_in.html')
 # Create your views here.

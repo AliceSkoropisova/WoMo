@@ -28,7 +28,7 @@ addButton.addEventListener('click', function(){
 
     let newToDo = {
         todo: addNote.value,
-        // checked: false,
+        checked: false,
         important: false
     };
     //todoList.push(newToDo);
@@ -40,6 +40,7 @@ addButton.addEventListener('click', function(){
         data: {
             delo: newToDo.todo,
             importance: newToDo.important,
+            checked: newToDo.checked,
             action: 'post',
             user_id: ID,
             day: headerDateArray[1],
@@ -90,10 +91,18 @@ function displayMessages(){
                 {
                     imp= true;
                 }
-
+                if(data.data[i].checked == 'false')
+                {
+                    che = false;
+                }
+                else
+                {
+                    che = true;
+                }
                 let newToDo = {
                 todo: data.data[i].todo,
-                important: imp
+                important: imp,
+                checked: che
                 };
                 todoList.push(newToDo);
                 localStorage.setItem('todo', JSON.stringify(todoList));
@@ -107,7 +116,8 @@ function displayMessages(){
     todoList.forEach(function(item, i){ 
         displayMessage += `
         <li>
-             
+            <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}></input>
+
             <label for='item_${i}' class="${item.important ? 'important': ''}">${item.todo}</label>
         </li>
         `;
@@ -115,18 +125,41 @@ function displayMessages(){
     });
 }
 
-{/* <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}></input> */}
 
-// todo.addEventListener('change', function(event){
-//     let idInput = event.target.getAttribute('id');
-//     let valueLabel = todo.querySelector('[for=' + idInput + ']').innerHTML;
-//     todoList.forEach(function(item){
-//         if (item.todo === valueLabel){
-//             item.checked = !item.checked;
-//             localStorage.setItem('todo', JSON.stringify(todoList));
-//         }
-//     });
-// });
+
+ todo.addEventListener('change', function(event){
+     let idInput = event.target.getAttribute('id');
+     let valueLabel = todo.querySelector('[for=' + idInput + ']').innerHTML;
+     todoList.forEach(function(item){
+         if (item.todo === valueLabel){
+             $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        delo: item.todo,
+                        importance: item.important,
+                        action: 'change checked',
+                        user_id: ID,
+                        checked: item.checked,
+                        day: headerDateArray[1],
+                        month: headerDateArray[0],
+                        year: headerDateArray[2],
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it is deleted!");
+                    },
+                    error: function (data) {
+                        console.log("it isnt deleted");
+                    }
+             });
+             //item.checked = !item.checked;
+             //localStorage.setItem('todo', JSON.stringify(todoList));
+         }
+     });
+ });
 
 todo.addEventListener('contextmenu', function(event){
     event.preventDefault();

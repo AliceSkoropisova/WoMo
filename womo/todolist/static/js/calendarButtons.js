@@ -5,10 +5,10 @@ function log_in1() {
 
         let monthDisplay = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
         let spl = dateHeader.textContent.split(' ');
-        for (let i =0; i < 11; i++){
+        for (let i =0; i < 12; i++){
             if (monthDisplay[i].toString() === spl[0].toString()){
                 month = i;
-                i = 12;
+                i = 13;
             }
         }
         year = parseInt(spl[2]);
@@ -43,10 +43,10 @@ function log_in1() {
 
     dateHeader.textContent = displayContent;
     spl = dateHeader.textContent.split(' ');
-    for (let i =0; i < 11; i++){
+    for (let i =0; i < 12; i++){
         if (monthDisplay[i].toString() === spl[0].toString()){
             headerDateArray[0] = i;
-            i = 12;
+            i = 13;
         }
     }
     headerDateArray[2] = parseInt(spl[2]);
@@ -55,17 +55,17 @@ function log_in1() {
     onTargetDate = 0;
     controllNumberOfClick = -1;
     checkMainHeader();
-    displayMessages()
+    displayMessages();
 }
 
 function log_in2() {
     date = parseInt(controllDateArray[1]);
     let monthDisplay = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
     let spl = dateHeader.textContent.split(' ');
-    for (let i =0; i < 11; i++){
+    for (let i =0; i < 12; i++){
         if (monthDisplay[i].toString() === spl[0].toString()){
             month = i;
-            i = 12;
+            i = 13;
         }
     }
     year = parseInt(spl[2]);
@@ -100,10 +100,10 @@ function log_in2() {
 
     dateHeader.textContent = displayContent;
     spl = dateHeader.textContent.split(' ');
-    for (let i =0; i < 11; i++){
+    for (let i =0; i < 12; i++){
         if (monthDisplay[i].toString() === spl[0].toString()){
             headerDateArray[0] = i;
-            i = 12;
+            i = 13;
         }
     }
     headerDateArray[2] = parseInt(spl[2]);
@@ -112,7 +112,7 @@ function log_in2() {
     onTargetDate = 0;
     controllNumberOfClick = -1;
     checkMainHeader();
-    displayMessages()
+    displayMessages();
 }
 
 function checkMainHeader(){
