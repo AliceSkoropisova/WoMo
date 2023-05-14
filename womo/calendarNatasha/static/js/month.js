@@ -28,6 +28,18 @@ let eventsArr=[];
 getEvents();
 console.log(eventsArr);
 
+function getCookie(cname) {
+     name = cname + "=";
+     ca = document.cookie.split(';');
+     for( i=0; i<ca.length; i++) {
+        c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if(c.indexOf(name) == 0)
+           return c.substring(name.length,c.length);
+     }
+     return "";
+}
+
 function initCalendar(){
 	const firstDay = new Date(year, month, 1);
 	const lastDay = new Date(year, month+1, 0);
@@ -244,6 +256,31 @@ function getWeekDayNumber(weekDay)
 }
 
 function updateEvents(date){
+    $.ajax(
+    {
+        type:'GET',
+        async: false,
+        url: '',
+        dataType: 'json',
+        data:{
+                 csrfmiddlewaretoken: getCookie('csrftoken'),
+                 action: 'get_Natasha',
+                 user_id: ID,
+        },
+        success: function(data)
+        {
+            eventsArr.length = 0;
+            localStorage.clear();
+            for(i = 0; i<data.data.length; i++)
+            {
+                eventsArr.push(day:data.day,
+			                    month: data.month,
+			                    year: data.year,
+			                    events: [title: data.delo]);
+                localStorage.setItem("events", JSON.stringify(eventsArr));
+            }
+        }
+    });
 	let events="";
 	eventsArr.forEach((event)=>{
 		if(
@@ -300,6 +337,28 @@ addEventSubmit.addEventListener("click", ()=>{
 			events: [newEvent]
 		});
 	}
+	$.ajax({
+        method: 'POST',
+        async: false,
+        url: '',
+        dataType: 'json',
+        data: {
+            delo: eventTitle,
+            importance: 'false',
+            action: 'post',
+            user_id: ID,
+            day: activeDay,
+            month: month,
+            year: year,
+            csrfmiddlewaretoken: getCookie('csrftoken')
+        },
+        success: function (data) {
+            console.log("it worked!");
+        },
+        error: function (data) {
+            console.log("it didnt work");
+        }
+    });
 	addEventContainer.classList.remove("active");
 	addEventTitle.value="";
 	updateEvents(activeDay);
@@ -310,28 +369,9 @@ addEventSubmit.addEventListener("click", ()=>{
 		activeDayElem.classList.add("event");
 	}
 
-	$.ajax({
-        method: 'POST',
-        async: false,
-        url: '',
-        dataType: 'json',
-        data: {
-            delo: newToDo.todo,
-            importance: newToDo.important,
-            action: 'post',
-            user_id: ID,
-            day: headerDateArray[1],
-            month: headerDateArray[0],
-            year: headerDateArray[2],
-            csrfmiddlewaretoken: getCookie('csrftoken')
-        },
-        success: function (data) {
-            console.log("it worked!");
-        },
-        error: function (data) {
-            console.log("it didnt work");
-        }
-    });
+
+
+
 
 });
 

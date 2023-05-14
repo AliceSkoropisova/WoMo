@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
 from todolist import views
+from calendarNatasha import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('calendar/', views.add_delo_Natasha, name='add_delo_Natasha'),
     #path('', views.index, name='index'),
     #path('home/', views.add_delo, name = 'add_delo'),
     #path('', include('notes.urls')),
