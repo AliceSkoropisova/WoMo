@@ -181,6 +181,7 @@ addEventCloseBtn.addEventListener("click", ()=>{
 document.addEventListener("click", (e)=>{
 	if(e.target!==addEventBtn && !addEventContainer.contains(e.target)){
 		addEventContainer.classList.remove("active");
+
 	}
 });
 addEventTitle.addEventListener("input", (e)=>{
@@ -329,7 +330,7 @@ addEventSubmit.addEventListener("click", ()=>{
 		title:eventTitle
 	};
 	let eventAdded=false;
-	console.log(eventsArr);
+	//console.log(eventsArr);
 	if(eventsArr.length>0){
 		eventsArr.forEach((item)=>{
 			if(
@@ -397,7 +398,28 @@ addEventSubmit.addEventListener("click", ()=>{
 eventContainer.addEventListener("click", (e)=>{
 	if(e.target.classList.contains("event")){
 		const eventTitle = e.target.children[0].children[1].innerHTML;
-		eventsArr.forEach((event)=>{
+		$.ajax({
+                            method: 'POST',
+                            async: false,
+                            url: '',
+                            dataType: 'json',
+                            data: {
+                                delo: eventTitle,
+                                action: 'delete',
+                                user_id: ID,
+                                day: activeDay,
+                                month: month,
+                                year: year,
+                                csrfmiddlewaretoken: getCookie('csrftoken')
+                            },
+                            success: function (data) {
+                                console.log("it is deleted!");
+                            },
+                            error: function (data) {
+                                console.log("it isnt deleted");
+                            }
+                        });
+		/*eventsArr.forEach((event)=>{
 			if(
 				event.day===activeDay &&
 				event.month===month+1 &&
@@ -413,7 +435,6 @@ eventContainer.addEventListener("click", (e)=>{
 					const activeDayElem = document.querySelector(".day.active");
 					if(activeDayElem.classList.contains("event")){
 						activeDayElem.classList.remove("event");
-						//console.log(activeDayElem.classList.value);
 						$.ajax({
                             method: 'POST',
                             async: false,
@@ -440,7 +461,7 @@ eventContainer.addEventListener("click", (e)=>{
 
 
 			}
-		});
+		});*/
 		updateEvents(activeDay);
 	}
 });

@@ -28,5 +28,15 @@ def add_delo_Natasha(request):
             'data': list(dela)
         }
         return JsonResponse(data, safe=False)
+    elif request.method == 'POST' and request.POST.get('action') == 'delete':
+        delo = request.POST.get('delo')
+        day = request.POST.get('day')
+        month = str(int(request.POST.get('month')) + 1)
+        year = request.POST.get('year')
+        user_id = request.POST.get('user_id')
+        user = User.objects.get(id=user_id)
+        change = ToDoList.objects.get(user = user, todo = delo, day = day, month = month, year = year)
+        change.delete()
+        return JsonResponse('Deleted', safe=False)
     return render(request, 'month.html')
 
