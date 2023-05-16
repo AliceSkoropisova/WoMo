@@ -273,10 +273,11 @@ function updateEvents(date){
             localStorage.clear();
             for(i = 0; i<data.data.length; i++)
             {
-                eventsArr.push(day:data.day,
-			                    month: data.month,
-			                    year: data.year,
-			                    events: [title: data.delo]);
+                newEvent={title: data.delo};
+                eventsArr.push({ day:data.day,
+                                month: data.month,
+                                year: data.year,
+                                events: [newEvent]});
                 localStorage.setItem("events", JSON.stringify(eventsArr));
             }
         }
