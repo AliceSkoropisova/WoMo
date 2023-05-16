@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
-from womo.todolist.models import ToDoList
+from todolist.models import ToDoList
 
 
 @login_required
