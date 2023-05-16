@@ -198,7 +198,7 @@ function addListener(){
 				day.classList.remove("active");
 			});
 
-			if(e.target.classlist.contains("prev-day")){
+			if(e.target.classList.contains("prev-day")){
 				prevMonth();
 				setTimeout(()=>{
 					const days = document.querySelectorAll(".day");
@@ -212,7 +212,7 @@ function addListener(){
 					});
 				}, 100);
 			}
-			else if(e.target.classlist.contains("туче-day")){
+			else if(e.target.classList.contains("next-day")){
 				nextMonth();
 				setTimeout(()=>{
 					const days = document.querySelectorAll(".day");
@@ -270,15 +270,30 @@ function updateEvents(date){
         success: function(data)
         {
             eventsArr.length = 0;
-            localStorage.clear();
+            day1 = '';
+            month1='';
+            year1 = '';
             for(i = 0; i<data.data.length; i++)
             {
-                newEvent={title: data.delo};
-                eventsArr.push({ day:data.day,
-                                month: data.month,
-                                year: data.year,
-                                events: [newEvent]});
-                localStorage.setItem("events", JSON.stringify(eventsArr));
+                if(data.data[i].day == day1 && data.data[i].month == month1 && data.data[i].year == year1)
+                {
+                    newEvent= {title: data.data[i].todo};
+                    eventsArr[eventsArr.length - 1].events.push(newEvent);
+                }
+                else
+                {
+                    newEvent= {title: data.data[i].todo};
+                    console.log(data.data[i].todo);
+                    eventsArr.push({
+                    day: Number(data.data[i].day),
+                    month: Number(data.data[i].month),
+                    year: Number(data.data[i].year),
+                    events: [newEvent]
+                    });
+                    day1 = data.data[i].day;
+                    month1 = data.data[i].month;
+                    year1 = data.data[i].year;
+                }
             }
         }
     });
@@ -314,6 +329,7 @@ addEventSubmit.addEventListener("click", ()=>{
 		title:eventTitle
 	};
 	let eventAdded=false;
+	console.log(eventsArr);
 	if(eventsArr.length>0){
 		eventsArr.forEach((item)=>{
 			if(
@@ -322,6 +338,7 @@ addEventSubmit.addEventListener("click", ()=>{
 				item.year===year
 			){
 				item.events.push(newEvent);
+				console.log(newEvent);
 				eventAdded=true;
 			}
 		});
@@ -338,28 +355,28 @@ addEventSubmit.addEventListener("click", ()=>{
 			events: [newEvent]
 		});
 	}
-	$.ajax({
-        method: 'POST',
-        async: false,
-        url: '',
-        dataType: 'json',
-        data: {
-            delo: eventTitle,
-            importance: 'false',
-            action: 'post',
-            user_id: ID,
-            day: activeDay,
-            month: month,
-            year: year,
-            csrfmiddlewaretoken: getCookie('csrftoken')
-        },
-        success: function (data) {
-            console.log("it worked!");
-        },
-        error: function (data) {
-            console.log("it didnt work");
-        }
-    });
+    $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        delo: eventTitle,
+                        importance: 'false',
+                        action: 'post',
+                        user_id: ID,
+                        day: activeDay,
+                        month: month,
+                        year: year,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it worked!");
+                    },
+                    error: function (data) {
+                        console.log("it didnt work");
+                    }
+                });
 	addEventContainer.classList.remove("active");
 	addEventTitle.value="";
 	updateEvents(activeDay);
@@ -392,10 +409,32 @@ eventContainer.addEventListener("click", (e)=>{
 					}
 				});
 				if(event.events.length===0){
-					eventsArr.splice(eventsAtt.indexOf(event), 1);
+					eventsArr.splice(eventsArr.indexOf(event), 1);
 					const activeDayElem = document.querySelector(".day.active");
 					if(activeDayElem.classList.contains("event")){
 						activeDayElem.classList.remove("event");
+						//console.log(activeDayElem.classList.value);
+						$.ajax({
+                            method: 'POST',
+                            async: false,
+                            url: '',
+                            dataType: 'json',
+                            data: {
+                                delo: '',
+                                action: 'delete',
+                                user_id: ID,
+                                day: activeDay,
+                                month: month,
+                                year: year,
+                                csrfmiddlewaretoken: getCookie('csrftoken')
+                            },
+                            success: function (data) {
+                                console.log("it is deleted!");
+                            },
+                            error: function (data) {
+                                console.log("it isnt deleted");
+                            }
+                        });
 					}
 				}
 
@@ -410,9 +449,49 @@ function saveEvents(){
 	localStorage.setItem("events", JSON.stringify(eventsArr));
 }
 function getEvents(){
-	if(localStorage.getItem("event"===null)){
+    $.ajax(
+    {
+        type:'GET',
+        async: false,
+        url: '',
+        dataType: 'json',
+        data:{
+                 csrfmiddlewaretoken: getCookie('csrftoken'),
+                 action: 'get_Natasha',
+                 user_id: ID,
+        },
+        success: function(data)
+        {
+            eventsArr.length = 0;
+            day1 = '';
+            month1='';
+            year1 = '';
+            for(i = 0; i<data.data.length; i++)
+            {
+                if(data.data[i].day == day1 && data.data[i].month == month1 && data.data[i].year == year1)
+                {
+                    newEvent= {title: data.data[i].delo};
+                    eventsArr[eventsArr.length - 1].events.push(newEvent);
+                }
+                else
+                {
+                    newEvent= {title: data.data[i].delo};
+                    eventsArr.push({
+                    day: Number(data.data[i].day),
+                    month: Number(data.data[i].month),
+                    year: Number(data.data[i].year),
+                    events: [newEvent]
+                    });
+                    day1 = data.data[i].day;
+                    month1 = data.data[i].month;
+                    year1 = data.data[i].year;
+                }
+            }
+        }
+    });
+	/*if(localStorage.getItem("event"===null)){
 		return;
 	}
-		eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+		eventsArr.push(...JSON.parse(localStorage.getItem("events")));*/
 }
 
