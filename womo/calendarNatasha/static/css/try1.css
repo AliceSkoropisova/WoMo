@@ -1,3 +1,6 @@
+@import 'css/menu.css';
+@import 'css/addModal.css';
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,41 +21,31 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-
-/* make sure to set some focus styles for accessibility */
 :focus {
     outline: 0;
 }
-
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
 body {
 	line-height: 1;
 }
-
 ol, ul {
 	list-style: none;
 }
-
 blockquote, q {
 	quotes: none;
 }
-
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
-
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 input[type=search]::-webkit-search-cancel-button,
 input[type=search]::-webkit-search-decoration,
 input[type=search]::-webkit-search-results-button,
@@ -60,7 +53,6 @@ input[type=search]::-webkit-search-results-decoration {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-
 input[type=search] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -68,17 +60,11 @@ input[type=search] {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
-
 textarea {
     overflow: auto;
     vertical-align: top;
     resize: vertical;
 }
-
-/**
- * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
- */
-
 audio,
 canvas,
 video {
@@ -87,112 +73,46 @@ video {
     *zoom: 1;
     max-width: 100%;
 }
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-
 audio:not([controls]) {
     display: none;
     height: 0;
 }
-
-/**
- * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
- * Known issue: no IE 6 support.
- */
-
 [hidden] {
     display: none;
 }
-
-/**
- * 1. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-
 html {
     font-size: 100%; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
     -ms-text-size-adjust: 100%; /* 2 */
 }
-
-/**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
-
 a:focus {
     outline: thin dotted;
 }
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-
 a:active,
 a:hover {
     outline: 0;
 }
-
-/**
- * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
- * 2. Improve image quality when scaled in IE 7.
- */
-
 img {
     border: 0; /* 1 */
     -ms-interpolation-mode: bicubic; /* 2 */
 }
-
-/**
- * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
- */
-
 figure {
     margin: 0;
 }
-
-/**
- * Correct margin displayed oddly in IE 6/7.
- */
-
 form {
     margin: 0;
 }
-
-/**
- * Define consistent border, margin, and padding.
- */
-
 fieldset {
     border: 1px solid #c0c0c0;
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
 }
-
-/**
- * 1. Correct color not being inherited in IE 6/7/8/9.
- * 2. Correct text not wrapping in Firefox 3.
- * 3. Correct alignment displayed oddly in IE 6/7.
- */
-
 legend {
     border: 0; /* 1 */
     padding: 0;
     white-space: normal; /* 2 */
     *margin-left: -7px; /* 3 */
 }
-
-/**
- * 1. Correct font size not being inherited in all browsers.
- * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
- *    and Chrome.
- * 3. Improve appearance and consistency in all browsers.
- */
-
 button,
 input,
 select,
@@ -202,39 +122,14 @@ textarea {
     vertical-align: baseline; /* 3 */
     *vertical-align: middle; /* 3 */
 }
-
-/**
- * Address Firefox 3+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
-
 button,
 input {
     line-height: normal;
 }
-
-/**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
- */
-
 button,
 select {
     text-transform: none;
 }
-
-/**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
- *    Known issue: inner spacing remains in IE 6.
- */
-
 button,
 html input[type="button"], /* 1 */
 input[type="reset"],
@@ -243,23 +138,10 @@ input[type="submit"] {
     cursor: pointer; /* 3 */
     *overflow: visible;  /* 4 */
 }
-
-/**
- * Re-set default cursor for disabled elements.
- */
-
 button[disabled],
 html input[disabled] {
     cursor: default;
 }
-
-/**
- * 1. Address box sizing set to content-box in IE 8/9.
- * 2. Remove excess padding in IE 8/9.
- * 3. Remove excess padding in IE 7.
- *    Known issue: excess padding remains in IE 6.
- */
-
 input[type="checkbox"],
 input[type="radio"] {
     box-sizing: border-box; /* 1 */
@@ -267,59 +149,29 @@ input[type="radio"] {
     *height: 13px; /* 3 */
     *width: 13px; /* 3 */
 }
-
-/**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-
 input[type="search"] {
     -webkit-appearance: textfield; /* 1 */
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box; /* 2 */
     box-sizing: content-box;
 }
-
-/**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
 }
-
-/**
- * Remove inner padding and border in Firefox 3+.
- */
-
 button::-moz-focus-inner,
 input::-moz-focus-inner {
     border: 0;
     padding: 0;
 }
-
-/**
- * 1. Remove default vertical scrollbar in IE 6/7/8/9.
- * 2. Improve readability and alignment in all browsers.
- */
-
 textarea {
     overflow: auto; /* 1 */
     vertical-align: top; /* 2 */
 }
-
-/**
- * Remove most spacing between table cells.
- */
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
 html,
 button,
 input,
@@ -327,58 +179,868 @@ select,
 textarea {
     color: #222;
 }
-
-
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
 }
-
 ::selection {
     background: #b3d4fc;
     text-shadow: none;
 }
-
 img {
     vertical-align: middle;
 }
-
 fieldset {
     border: 0;
     margin: 0;
     padding: 0;
 }
-
 textarea {
     resize: vertical;
 }
-
 .chromeframe {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
 }
-
-
-
-
-
-
-
-body, html {
-  height: 100%;
+/* roboto-300 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/roboto-v30-cyrillic_latin-300.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/roboto-v30-cyrillic_latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v30-cyrillic_latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-300.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v30-cyrillic_latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+/* roboto-regular - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v30-cyrillic_latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/roboto-v30-cyrillic_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+/* roboto-500 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/roboto-v30-cyrillic_latin-500.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/roboto-v30-cyrillic_latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v30-cyrillic_latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-500.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v30-cyrillic_latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 
-.item {
-  /* The image used */
-  background-image: url("background.png");
 
-  /* Full height */
+ body, html { /*здесь применяются самые основные свойства для главных тегов*/
   height: 100%;
+	width: 100%;
+	/* background-color: #010101; */
+	color: #fff;
+	display: flex;
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.55;/*расстояние между строчками*/
+	background-image: url(background.png);/*помещаем картинку*/
+  background-repeat: no-repeat;/*фон не должен дублироваться на экране, он единственнен*/
+  background-attachment: fixed;/*фиксация картинки по экрану*/
+  background-size: 100% 100%;/*растягивание по ширине и высоте*/
+}
+.section-main-part{
+	width: 85%;
+	margin-left: 23%;
+}
+.main-header-block{
+	height: 16%;
+}
+#monthDisplay{
+	position: absolute;
+	height: 75px;/*75*/
+	width: 30%;/*2560*/
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 124px;/*64*/
+	line-height: 75px;/*75*/
+	color: #2E1949;
+	margin-top: 4%;/*60*/
+}
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.rectangle1{
+	position: absolute;
+	width: 15%;/*580379*/
+	height: 6%;/*15090*/
+	left: 60%;/*1102*/
+	top: 5%;/*54*/
+	background: #FFCD4B;
+	border-radius: 45px;/*25*/
+}
+.rectangle1__week{
+	text-decoration: none;
+	position: absolute;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 52px;/*32*/
+	line-height: 38px;/*38*/
+	color: #FFFFFF;
+	text-align: center;
+	margin-top:10%;/*23*/
+	margin-left: 12%;/*45*/
+}
+.rectangle1__month{
+	text-decoration: none;
+	position: absolute;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 52px;/*32*/
+	line-height: 38px;/*38*/
+	color: #FFFFFF;
+	text-align: center;
+	margin-top:10%;
+	margin-left: 55%;
+}
+.rectangle2{
+	position: absolute;
+	width: 7%;/*280180*/
+	height: 6%;/*90*/
+	left: 68%;/*1301*/
+	top: 5%;/*54*/
+	background: linear-gradient(90deg, #F857A6 9.17%, #F15F79 111.11%);
+	border-radius: 35px;/*25*/
+}
+.rectangle2_2{
+	position: absolute;
+	width: 7%;/*280180*/
+	height: 6%;/*90*/
+	left: 60%;/*1301*/
+	top: 5%;/*54*/
+	background: linear-gradient(90deg, #F857A6 9.17%, #F15F79 111.11%);
+	border-radius: 35px;/*25*/
+}
+.rectangle2__month{
+	text-decoration: none;
+	position: absolute;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 52px;
+	line-height: 38px;
+	color: #FFFFFF;
+	margin-top:19%;
+	margin-left: 5%;
+}
+.rectangle2__week{
+	text-decoration: none;
+	position: absolute;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 52px;
+	line-height: 38px;
+	color: #FFFFFF;
+	margin-top:19%;/*23*/
+	margin-left: 12%;/*45*/
+}
+#rectangle4{
+	position: absolute;
+	min-width: 205px;
+	min-height: 90px;
+	left: 1102px;
+	top: 54px;
+	background: linear-gradient(90deg, #F857A6 9.17%, #F15F79 111.11%);
+	border-radius: 25px;
+	z-index: 1;
+}
+.main-main-block{
+	height: 84%;
+	/* width: 2560px; */
+	/* max-height: 70%; */
+	/* margin-top: 15%; */
+	/* margin-top: 170px; */
+}
+#calendar {
+  width: 2380px;
+	height: 1720px;
+  display: flex;
+  flex-wrap:wrap;
+	margin-top: 3%;
+	/* margin-top: 15%; */
+	/* left: 510px;
+	top: 210px; */
+}
+
+.weekdays{
+	width: 1168px;
+	height: 80px;
+}
+.weekdays__2{
+	width: 1168px;
+	height: 80px;
+	margin-top: 10%;
+}
+
+ul.weekdays__days li{
+	list-style: none;/*все,это больше не список обычный,поняли!!!!*/
+	display: inline-block;/*строчно-блочный элемент*/
+	position:absolute;/*👆элемент ведет себя снаружи как строчный,а внутри как блочный*/
+	/* width: 46px;
+	height: 42px;
+	margin-top:0px; */
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 66px;/*36 early*/
+	line-height: 42px;
+	color: #2E1949;
+}
+ul.weekdays__days li:nth-child(1)
+{
+	left: 1160px;/*от 1080 отличается в 200 писк(тут 340 там 140 разница*/
+}
+ul.weekdays__days li:nth-child(2)
+{
+	left: 1500px;
+}
+ul.weekdays__days li:nth-child(3)
+{
+	left: 1840px;
+}
+ul.weekdays__days li:nth-child(4)
+{
+	left: 2180px;
+}
+ul.weekdays__days li:nth-child(5)
+{
+	left: 2520px;
+}
+ul.weekdays__days li:nth-child(6)
+{
+	left: 2860px;
+}
+ul.weekdays__days li:nth-child(7)
+{
+	left: 3200px;
+}
+
+ul.weekdays__days__2 li{
+	list-style: none;/*все,это больше не список обычный,поняли!!!!*/
+	display: inline-block;/*строчно-блочный элемент*/
+	position:absolute;/*👆элемент ведет себя снаружи как строчный,а внутри как блочный*/
+	/* width: 46px;
+	height: 42px;
+	margin-top:0px; */
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 66px;/*36 early*/
+	line-height: 42px;
+	color: #2E1949;
+}
+ul.weekdays__days__2 li:nth-child(1)
+{
+	left: 1160px;/*от 1080 отличается в 200 писк(тут 340 там 140 разница*/
+}
+ul.weekdays__days__2 li:nth-child(2)
+{
+	left: 1500px;
+}
+ul.weekdays__days__2 li:nth-child(3)
+{
+	left: 1840px;
+}
+ul.weekdays__days__2 li:nth-child(4)
+{
+	left: 2180px;
+}
+ul.weekdays__days__2 li:nth-child(5)
+{
+	left: 2520px;
+}
+ul.weekdays__days__2 li:nth-child(6)
+{
+	left: 2860px;
+}
+ul.weekdays__days__2 li:nth-child(7)
+{
+	left: 3200px;
+}
+#listToDo{
+	position: absolute;
+	height: 93%;
+	width: 23%;
+
+	left: 73%;
+}
+ul.weekcounts li{
+	list-style: none;
+	display: inline-block;
+	position:absolute;
+	width: 73px;
+	height: 75px;
+	margin-top: 180px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 64px;
+	line-height: 75px;
+	color: #2E1949;
+}
+#line1{
+	position: absolute;
+	width: 65%;/*25031293*/
+	height: 0px;/*0*/
+	left: 27%;/*510*/
+	top: 31%;/*340*/
+	border: 2px solid #FFFFFF;
+}
+#line2{
+	position: absolute;
+	width: 65%;/**/
+	height: 0px;/**/
+	left: 27%;/**/
+	top: 87%;/*935*/
+	border: 2px solid #FFFFFF;
+}
+#rectangle3 {
+	position: absolute;
+	width: 1293px;
+	height: 100px;
+	left: 510px;
+	top: 954px;
+	background: #FFFFFF;
+	border-radius: 20px;
+}
+
+.circle_block{
+	position: absolute;
+	width: 85px;
+	height: 85px;
+	left: 1675px;
+	top: 960px;
+	border-radius: 50px;
+	background: linear-gradient(90deg, #FFB347 0%, #FFCC33 100%);
+}
+.write_something{
+	position: absolute;
+	width: 480px;
+	height: 42px;
+	margin: 985px 990px 53px 550px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 36px;
+	line-height: 42px;
+	color: #2E1949;
+}
+.firstday{
+	position: absolute;
+	width: 170px;
+	height: 314px;
+	left: 510px;
+	top: 595px;
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(25px);
+	border-radius: 20px;
+}
+.thirdday{
+	position: absolute;
+	width: 170px;
+	height: 229px;
+	left: 881px;
+	top: 680px;
+	background: rgba(191, 90, 224, 0.7);
+	backdrop-filter: blur(25px);
+	border-radius: 20px;
+}
+.fourdday{
+	position: absolute;
+	width: 170px;
+	height: 270px;
+	left: 1069px;
+	top: 639px;
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(25px);
+	border-radius: 20px;
+}
+
+
+
+/* #header {
+  padding: 10px;
+  color: #d36c6c;
+  font-size: 26px;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: space-between;
+} */
+.buttons-throw{
+	position: absolute;
+	height: 5%;/*50*/
+	width: 10%;/*120*/
+	margin-left: 22%;/*430*/
+	top: 6%;/*80*/
+	/* margin-top: 80px; */
+}
+#nextButton{
+	position: absolute;
+	width: 105px;/*48*/
+	height: 105px;/*48*/
+	left: 35%;/*55*/
+	background-image: url(Login.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position: center;
+	border-radius:55px;/*25*/
+	border-color: #FFCD4B;
+}
+#backButton{
+	position: absolute;
+	width: 105px;/*48*/
+	height: 105px;/*48*/
+	background-image: url(Login\ Rounded.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position: center;
+	border-radius:55px;/*25*/
+	border-color: #FFCD4B;
+}
+
+/* #numbers{
+	position: absolute;
+	width: 73px;
+	height: 75px;
+	margin-top: 180px;
+	margin-left: 558px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 64px;
+	line-height: 75px;
+	color: #2E1949;
+}
+.day {
+  width: 330px;
+  padding: 10px;
+  height: 330px;
+  cursor: pointer;
+  box-sizing: border-box;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 28px;
+	line-height: 42px;
+
+color: #2E1949;
+  background-color: white;
+  margin: 5px;
+  box-shadow: 0px 0px 3px #CBD4C2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.day:hover {
+  background-color: rgba(232, 191, 240, 0.4);
+}
+
+.day + #currentDay {
+  background-color:#d48bec;
+}
+.event {
+  font-size: 10px;
+  padding: 3px;
+  background-color: #58bae4;
+  color: white;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+}
+.padding {
+  cursor: default !important;
+  background-color: rgba(251, 225, 210, 0.4) !important;
+  box-shadow: none !important;
+}
+
+#newEventModal, #deleteEventModal {
+  display: none;
+  z-index: 20;
+  padding: 25px;
+  background-color: #e8f4fa;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 350px;
+  top: 100px;
+  left: calc(50% - 175px);
+  position: absolute;
+  font-family: sans-serif;
+}
+#eventTitleInput {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 3px gray;
+}
+#eventTitleInput.error {
+  border: 2px solid red;
+}
+#cancelButton, #deleteButton {
+  background-color: #d36c6c;
+}
+#saveButton, #closeButton {
+  background-color: #92a1d1;
+}
+#eventText {
+  font-size: 14px;
+}
+#modalBackDrop {
+  display: none;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+} */
+@media (max-width: 2560px){
+	.main-main-block{
+		width: 84%;
+	}
+	#calendar{
+		width: 1470px;
+		height: 1070px;
+		margin-top: 1%;
+	}
+	.day{
+		width: 200px;
+		height: 200px;
+	}
+	.rectangle1, .rectangle2, .rectangle2_2{
+		border-radius: 35px;
+	}
+	.rectangle1__week{
+		font-size: 42px;
+		margin-top: 25px;
+	}
+	.rectangle2__month{
+		font-size: 42px;
+		margin-top: 25px;
+	}
+	.rectangle1__month{
+		font-size: 42px;
+		margin-top: 25px;
+	}
+	.rectangle2__week{
+		font-size: 42px;
+		margin-top: 25px;
+	}
+	.weekdays, .weekdays__2{
+		font-size: 56px;
+	}
+	ul.weekdays__days li:nth-child(1){
+		left:760px;
+	}
+	ul.weekdays__days li:nth-child(2){
+		left:970px;
+	}
+	ul.weekdays__days li:nth-child(3){
+		left:1180px;
+	}
+	ul.weekdays__days li:nth-child(4){
+		left:1390px;
+	}
+	ul.weekdays__days li:nth-child(5){
+		left:1600px;
+	}
+	ul.weekdays__days li:nth-child(6){
+		left:1810px;
+	}
+	ul.weekdays__days li:nth-child(7){
+		left:2020px;
+	}
+	ul.weekdays__days__2 li:nth-child(1){
+		left:730px;
+	}
+	ul.weekdays__days__2 li:nth-child(2){
+		left:980px;
+	}
+	ul.weekdays__days__2 li:nth-child(3){
+		left:1230px;
+	}
+	ul.weekdays__days__2 li:nth-child(4){
+		left:1480px;
+	}
+	ul.weekdays__days__2 li:nth-child(5){
+		left:1730px;
+	}
+	ul.weekdays__days__2 li:nth-child(6){
+		left:1980px;
+	}
+	ul.weekdays__days__2 li:nth-child(7){
+		left:2230px;
+	}
+	#monthDisplay{
+		font-size: 94px;
+	}
+	.buttons-throw{
+		margin-left: 25%;
+	}
+	#nextButton{
+		width: 65px;
+		height: 65px;
+	}
+	#backButton{
+		width: 65px;
+		height: 65px;
+	}
+	.link >span{
+		font-size: 54px;
+	}
+	.link__me >span{
+		font-size: 54px;
+	}
+	.link__about >span{
+		font-size: 54px;
+	}
+}
+@media (max-width: 2160px){
+	.main-main-block{
+		width: 90%;
+	}
+	#calendar{
+		width: 1400px;
+		height: 1020px;
+		margin-top: 1%;
+	}
+	.day{
+		width: 190px;
+		height: 190px;
+	}
+	.rectangle1, .rectangle2, .rectangle2_2{
+		border-radius: 33px;
+	}
+	.rectangle1__week{
+		font-size: 38px;
+		margin-top: 25px;
+	}
+	.rectangle2__month{
+		font-size: 38px;
+		margin-top: 25px;
+	}
+	.rectangle1__month{
+		font-size: 38px;
+		margin-top: 25px;
+	}
+	.rectangle2__week{
+		font-size: 38px;
+		margin-top: 25px;
+	}
+	.weekdays, .weekdays__2{
+		font-size: 50px;
+	}
+	ul.weekdays__days li:nth-child(1){
+		left:640px;
+	}
+	ul.weekdays__days li:nth-child(2){
+		left:840px;
+	}
+	ul.weekdays__days li:nth-child(3){
+		left:1040px;
+	}
+	ul.weekdays__days li:nth-child(4){
+		left:1240px;
+	}
+	ul.weekdays__days li:nth-child(5){
+		left:1440px;
+	}
+	ul.weekdays__days li:nth-child(6){
+		left:1640px;
+	}
+	ul.weekdays__days li:nth-child(7){
+		left:1840px;
+	}
+	ul.weekdays__days__2 li:nth-child(1){
+		font-size: 46px;
+		left:630px;
+	}
+	ul.weekdays__days__2 li:nth-child(2){
+		font-size: 46px;
+		left:845px;
+	}
+	ul.weekdays__days__2 li:nth-child(3){
+		font-size: 46px;
+		left:1060px;
+	}
+	ul.weekdays__days__2 li:nth-child(4){
+		font-size: 46px;
+		left:1275px;
+	}
+	ul.weekdays__days__2 li:nth-child(5){
+		font-size: 46px;
+		left:1490px;
+	}
+	ul.weekdays__days__2 li:nth-child(6){
+		font-size: 46px;
+		left:1705px;
+	}
+	ul.weekdays__days__2 li:nth-child(7){
+		font-size: 46px;
+		left:1910px;
+	}
+	#monthDisplay{
+		font-size: 74px;
+	}
+	.buttons-throw{
+		margin-left: 24%;
+	}
+	#nextButton{
+		width: 62px;
+		height: 62px;
+	}
+	#backButton{
+		width: 62px;
+		height: 62px;
+	}
+	.link >span{
+		font-size: 50px;
+	}
+	.link__me >span{
+		font-size: 50px;
+	}
+	.link__about >span{
+		font-size: 50px;
+	}
+}
+@media (max-width: 1920px){
+	.main-main-block{
+		width: 84%;
+	}
+	#calendar{
+		width: 980px;
+		height: 720px;
+	}
+	.day{
+		width: 130px;
+		height: 130px;
+	}
+	.rectangle1, .rectangle2, .rectangle2_2{
+		border-radius: 25px;
+	}
+	.rectangle1__week{
+		font-size: 30px;
+		margin-top: 13px;
+	}
+	.rectangle2__month{
+		font-size: 30px;
+		margin-top: 13px;
+	}
+	.rectangle1__month{
+		font-size: 30px;
+		margin-top: 13px;
+	}
+	.rectangle2__week{
+		font-size: 30px;
+		margin-top: 13px;
+	}
+	.weekdays, .weekdays__2{
+		font-size: 32px;
+	}
+	ul.weekdays__days li:nth-child(1){
+		font-size: 32px;
+		left:565px;
+	}
+	ul.weekdays__days li:nth-child(2){
+		font-size: 32px;
+		left:705px;
+	}
+	ul.weekdays__days li:nth-child(3){
+		font-size: 32px;
+		left:845px;
+	}
+	ul.weekdays__days li:nth-child(4){
+		font-size: 32px;
+		left:990px;
+	}
+	ul.weekdays__days li:nth-child(5){
+		font-size: 32px;
+		left:1130px;
+	}
+	ul.weekdays__days li:nth-child(6){
+		font-size: 32px;
+		left:1270px;
+	}
+	ul.weekdays__days li:nth-child(7){
+		font-size: 32px;
+		left:1410px;
+	}
+	ul.weekdays__days__2 li:nth-child(1){
+		font-size: 32px;
+		left:560px;
+	}
+	ul.weekdays__days__2 li:nth-child(2){
+		font-size: 32px;
+		left:750px;
+	}
+	ul.weekdays__days__2 li:nth-child(3){
+		font-size: 32px;
+		left:940px;
+	}
+	ul.weekdays__days__2 li:nth-child(4){
+		font-size: 32px;
+		left:1130px;
+	}
+	ul.weekdays__days__2 li:nth-child(5){
+		font-size: 32px;
+		left:1320px;
+	}
+	ul.weekdays__days__2 li:nth-child(6){
+		font-size: 32px;
+		left:1510px;
+	}
+	ul.weekdays__days__2 li:nth-child(7){
+		font-size: 32px;
+		left:1700px;
+	}
+	#monthDisplay{
+		font-size: 54px;
+	}
+	.buttons-throw{
+		margin-left: 24%;
+	}
+	#nextButton{
+		width: 48px;
+		height: 48px;
+	}
+	#backButton{
+		width: 48px;
+		height: 48px;
+	}
+	.link >span{
+		font-size: 36px;
+	}
+	.link__me >span{
+		font-size: 36px;
+	}
+	.link__about >span{
+		font-size: 36px;
+	}
 }

@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
+
 from todolist.models import ToDoList
 
-
+app_name = "calendarNatasha"
 @login_required
 def add_delo_Natasha(request):
     delo = ''
@@ -16,7 +17,8 @@ def add_delo_Natasha(request):
         year = request.POST.get('year')
         user_id = request.POST.get('user_id')
         user = User.objects.get(id=user_id)
-        todo_instance = ToDoList.objects.create(user = user, todo = delo, important = 'false', day = day, month = month, year = year, checked = 'false')
+        todo_instance = ToDoList.objects.create(user=user, todo=delo, important='false', day=day, month=month,
+                                                year=year, checked='false')
         return JsonResponse('Delo is written', safe=False)
     elif request.method == 'GET' and request.GET.get('action') == 'get_Natasha':
         data = ToDoList.objects.all()
@@ -26,3 +28,4 @@ def add_delo_Natasha(request):
         }
         return JsonResponse(data, safe=False)
     return render(request, 'month.html')
+

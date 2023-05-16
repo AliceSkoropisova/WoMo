@@ -56,7 +56,7 @@ body{
 	justify-content: center;
 	font-family: 'Roboto', sans-serif;
 	line-height: 1.55;/*расстояние между строчками*/
-	background-image: url(../background.png);/*помещаем картинку*/
+	background-image: url("../img/background_wallpaper.png");/*помещаем картинку*/
   background-repeat: no-repeat;/*фон не должен дублироваться на экране, он единственнен*/
   background-attachment: fixed;/*фиксация картинки по экрану*/
   background-size: 100% 100%;/*растягивание по ширине и высоте*/
@@ -173,7 +173,7 @@ body{
 	width: 48px;/*48*/
 	height: 48px;/*48*/
 	left: 45%;/*55*/
-	background-image: url(../Login.png);
+	background-image: url("../img/Login.png");
 	background-color: transparent;
 	background-repeat: no-repeat;
 	background-size:cover;
@@ -185,7 +185,7 @@ body{
 	position: absolute;
 	width: 48px;/*48*/
 	height: 48px;/*48*/
-	background-image: url(../Login\ Rounded.png);
+	background-image: url("../img/LoginRounded.png");
 	background-color: transparent;
 	background-repeat: no-repeat;
 	background-size:cover;
@@ -576,7 +576,7 @@ body{
 	opacity: 0.5;
 	border-radius: 50%;
 	background-color: transparent;
-	background-image: url(../add.svg);
+	background-image: url("../img/add.svg");
 	background-color: transparent;
 	background-repeat: no-repeat;
 	background-size:cover;
