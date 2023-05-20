@@ -1,19 +1,6 @@
-
-
-from .models import Notes
-from django.views.generic import ListView, CreateView
-from django.urls import reverse_lazy
+from django.shortcuts import render
 
 
 
-class NotesListView(ListView):
-    model = Notes
-    template_name = "notes.html"
-    context_object_name = "notes_list"
-
-
-class NotesCreateView(CreateView):
-    model = Notes
-    template_name = 'create_notes_form.html'
-    fields = ['topic', 'text']
-    success_url = reverse_lazy('noteslist')
+def notes_view(request):
+    return render(request, 'note_page.html')

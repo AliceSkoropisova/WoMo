@@ -32,6 +32,7 @@ function createNote(title, text){
     onblur="if(this.value=='')this.value=this.defaultValue" 
     value=${text}>${text}</textarea>
 
+
     </div> 
     `
 
@@ -52,14 +53,18 @@ function createNote(title, text){
 
     deleteBtn.addEventListener('click', (e) => {
         noteEl.remove();
+        console.log(noteEl.);
+        console.log(e);
     });
 
     titleInputEl.addEventListener('input', (e) => {
         titleEl.innerText = e.target.value;
+        console.log(e.target.value);
     });
 
     textInputEl.addEventListener('input', (e) => {
         textEl.innerText = e.target.value;
+        console.log(e.target.value);
     });
 
 
@@ -69,6 +74,7 @@ function createNote(title, text){
 addBtn.addEventListener('click', (e) => {
     const el = createNote("Заголовок", "Ваш текст");
     notesEl.appendChild(el);
+
 });
 
 
