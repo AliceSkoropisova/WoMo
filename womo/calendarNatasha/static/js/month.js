@@ -142,6 +142,7 @@ dateInput.addEventListener("keyup", (e)=>{
 	dateInput.value=dateInput.value.replace(/[^0-9/]/g, "");
 	if(dateInput.value.length===2){
 		dateInput.value+="/";
+
 	}
 	if(dateInput.value.length>7){
 		dateInput.value = dateInput.value.slice(0,7);
@@ -397,6 +398,7 @@ addEventSubmit.addEventListener("click", ()=>{
 
 eventContainer.addEventListener("click", (e)=>{
 	if(e.target.classList.contains("event")){
+
 		const eventTitle = e.target.children[0].children[1].innerHTML;
 		$.ajax({
                             method: 'POST',
@@ -419,6 +421,7 @@ eventContainer.addEventListener("click", (e)=>{
                                 console.log("it isnt deleted");
                             }
                         });
+
 		/*eventsArr.forEach((event)=>{
 			if(
 				event.day===activeDay &&
