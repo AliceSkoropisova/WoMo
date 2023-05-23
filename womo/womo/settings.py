@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'registration',
     'todolist',
     'calendarNatasha',
+    'notes',
 ]
 
 MIDDLEWARE = [

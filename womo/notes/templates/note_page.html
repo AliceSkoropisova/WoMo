@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+    {% block link %}<link rel="stylesheet" href="{% static 'css/style_note_page.css' %}">{% endblock %}
+  {% block content %}
+    <div class="mainHeader">
+        <h1>Мои заметки</h1>
+    </div>
+
+    <!-- <section class = "create__memo">
+        <div class="input__text">
+            <input type="text" class="add__text" placeholder="Побаловать себя вкусненьким :)"/>
+            <a href="#5" class="btn__add_note">
+                <img src="img/add_note.svg" alt="" class="add__note">
+            </a>
+        </div>
+        <div class="wrapper">
+            <ul class="todo"></ul>
+        </div>
+    </section> -->
+    <div class="container">
+        <a href="#5" class="btn__add_note">
+            <img src="{% static 'img/add_note.svg'%}" alt="" class="add__note">
+        </a>
+
+        <div class="notes"></div>
+    </div>
+    <script src="{% static 'js/memo.js'%}"></script>
+{% endblock %}
