@@ -33,6 +33,18 @@ eventContSix, eventContSeven]
 const eventsArr=[];
 getEvents();
 
+function getCookie(cname) {
+     name = cname + "=";
+     ca = document.cookie.split(';');
+     for( i=0; i<ca.length; i++) {
+        c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if(c.indexOf(name) == 0)
+           return c.substring(name.length,c.length);
+     }
+     return "";
+}
+
 	function initWeek(){
 	const firstDayWeek = today.getDate()-today.getDay()+1;
 	const lastDayWeek = firstDayWeek+7;
@@ -272,6 +284,47 @@ function getWeekDayNumber(weekDay)//в помощь предыдущей фун�
 }
 //выписывание дел
 function updateEvents(date){
+$.ajax(
+    {
+        type:'GET',
+        async: false,
+        url: '',
+        dataType: 'json',
+        data:{
+                 csrfmiddlewaretoken: getCookie('csrftoken'),
+                 action: 'get_Natasha',
+                 user_id: ID,
+        },
+        success: function(data)
+        {
+            eventsArr.length = 0;
+            day1 = '';
+            month1='';
+            year1 = '';
+            for(qq = 0; qq<data.data.length; qq++)
+            {
+                if(data.data[qq].day == day1 && data.data[qq].month == month1 && data.data[qq].year == year1)
+                {
+                    newEvent= {title: data.data[qq].todo};
+                    eventsArr[eventsArr.length - 1].events.push(newEvent);
+                }
+                else
+                {
+                    newEvent= {title: data.data[qq].todo};
+                    console.log(data.data[qq].todo);
+                    eventsArr.push({
+                    day: Number(data.data[qq].day),
+                    month: Number(data.data[qq].month),
+                    year: Number(data.data[qq].year),
+                    events: [newEvent]
+                    });
+                    day1 = data.data[qq].day;
+                    month1 = data.data[qq].month;
+                    year1 = data.data[qq].year;
+                }
+            }
+        }
+    });
 	let events="";
 	console.log(date);
 	console.log(month+1);
@@ -369,7 +422,30 @@ addEvSubmit.addEventListener("click", ()=>{
 			//num:activeDay.getDay(),
 			events: [newEvent]
 		});
-	}
+		}
+		$.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        delo: eventTitle,
+                        importance: 'false',
+                        action: 'post',
+                        user_id: ID,
+                        day: activeDay,
+                        month: month,
+                        year: year,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it worked!");
+                    },
+                    error: function (data) {
+                        console.log("it didnt work");
+                    }
+                });
+
 	addEventTit.value="";
 	updateEvents(activeDay);
 	const activeDayElem = document.querySelector(".day.active");
@@ -392,6 +468,27 @@ for(let c=0;c<7;c++){
 						console.log(event.day, event.month, event.year);
 						if(confirm("Вы действительно хотите удалить запись?")){
 							const eventTitle = e.target.children[0].children[1].innerHTML;
+							$.ajax({
+                            method: 'POST',
+                            async: false,
+                            url: '',
+                            dataType: 'json',
+                            data: {
+                                delo: eventTitle,
+                                action: 'delete',
+                                user_id: ID,
+                                day: activeDay,
+                                month: month,
+                                year: year,
+                                csrfmiddlewaretoken: getCookie('csrftoken')
+                            },
+                            success: function (data) {
+                                console.log("it is deleted!");
+                            },
+                            error: function (data) {
+                                console.log("it isnt deleted");
+                            }
+                        });
 						event.events.forEach((item, index)=>{
 							if(item.title===eventTitle){
 								console.log("я тута");
@@ -425,8 +522,48 @@ function saveEvents(){
 	localStorage.setItem("events", JSON.stringify(eventsArr));
 }
 function getEvents(){
-	if(localStorage.getItem("events"===null)){
+    $.ajax(
+    {
+        type:'GET',
+        async: false,
+        url: '',
+        dataType: 'json',
+        data:{
+                 csrfmiddlewaretoken: getCookie('csrftoken'),
+                 action: 'get_Natasha',
+                 user_id: ID,
+        },
+        success: function(data)
+        {
+            eventsArr.length = 0;
+            day1 = '';
+            month1='';
+            year1 = '';
+            for(i = 0; i<data.data.length; i++)
+            {
+                if(data.data[i].day == day1 && data.data[i].month == month1 && data.data[i].year == year1)
+                {
+                    newEvent= {title: data.data[i].delo};
+                    eventsArr[eventsArr.length - 1].events.push(newEvent);
+                }
+                else
+                {
+                    newEvent= {title: data.data[i].delo};
+                    eventsArr.push({
+                    day: Number(data.data[i].day),
+                    month: Number(data.data[i].month),
+                    year: Number(data.data[i].year),
+                    events: [newEvent]
+                    });
+                    day1 = data.data[i].day;
+                    month1 = data.data[i].month;
+                    year1 = data.data[i].year;
+                }
+            }
+        }
+    });
+	/*if(localStorage.getItem("events"===null)){
 		return;
 	}
-	eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+	eventsArr.push(...JSON.parse(localStorage.getItem("events")));*/
 }

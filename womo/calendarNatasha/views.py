@@ -8,7 +8,7 @@ from todolist.models import ToDoList
 
 app_name = "calendarNatasha"
 @login_required
-def add_delo_Natasha(templates, request):
+def add_delo_Natasha(request):
     delo = ''
     if request.POST.get('action') == 'post':
         delo = request.POST.get('delo')
@@ -38,5 +38,10 @@ def add_delo_Natasha(templates, request):
         change = ToDoList.objects.get(user = user, todo = delo, day = day, month = month, year = year)
         change.delete()
         return JsonResponse('Deleted', safe=False)
-    return render(request, templates)
+    if request.path == '/calendar/':
+        print('kapez')
+        return render(request, 'month.html')
+    else:
+        print('ne kapez')
+        return render(request, 'try.html')
 
