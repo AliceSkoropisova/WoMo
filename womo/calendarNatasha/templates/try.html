@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/trash.css' rel='stylesheet'>
+	<title>WoMo App</title>
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+	<link rel="stylesheet" href="{% static 'css/menu.css'%}">
+	<link rel="stylesheet" href="{% static 'css/newweek.css'%}">
+	
+</head>
+<body>
+		<section class="menu">
+			<div class="image-stack__item menu__wallpaper">
+					<img src="{% static 'backgroud_menu.jpg'%}" alt="Фиолетовый фон под меню">
+			</div>
+			<div class="image-stack__item avatar">
+					<img src="{% static 'avatar.jpg'%} alt="Собачка на автарку">
+			</div>
+			<ul class="menu__list list">
+					<li class="menu__item item">
+							<a href="index.html" class="menu__link link">
+									<img src="arms_up.svg" alt="иконка профиля">
+									<span>Профиль</span>
+							</a>                    
+					</li>
+					<li class="menu__item item">
+							<a href="try.html" class="menu__link link">
+									<img src="calendar.svg" alt="иконка календаря">
+									<span>Календарь</span>
+							</a>
+					</li>
+					<li class="menu__item item">
+							<a href="#3" class="menu__link link">
+									<img src="goal.svg" alt="иконка целей">
+									<span>Цели</span>
+							</a>                    
+					</li>
+					<li class="menu__item item">
+							<a href="#4" class="menu__link link">
+									<img src="notes.svg" alt="иконка заметок">
+									<span>Заметки</span>
+							</a>
+					</li>
+			</ul>
+			<a href="#" class="link__me">
+					<span>Я</span>
+			</a>
+			<a href="#" class="link__about">
+					<span>О нас</span>
+			</a>
+	</section>
+<section class="section-main-part">
+	<header class="main-header-block">
+		<div id="week-monthDisplay">
+		</div>
+		<div class="rectangle1">
+			<a href="{% url 'calendar:add_delo_Natasha_month' %}" class="rectangle1__month">месяц</a>
+		</div>
+		<div class="rectangle2_2">
+			<a href="{% url 'calendar:add_delo_Natasha_week' %}" class="rectangle2__week">неделя</a>
+		</div>
+		<div class="buttons-throw">
+			<button id="week-backButton"></button>
+			<button id="week-nextButton"></button>
+		</div>
+	</header>
+	<main class="main-main-block">
+		<div class="section-head">
+			<div class="week-counts">
+			</div>
+			<div class="week-days">
+				<div>ПН</div>
+				<div>ВТ</div>
+				<div>СР</div>
+				<div>ЧТ</div>
+				<div>ПТ</div>
+				<div>СБ</div>
+				<div>ВС</div>
+			</div>
+		</div>
+		<div class="section-body">
+			<div id="line1"></div>
+			<div class="week-block-one"></div>
+			<div class="week-block-two"></div>
+			<div class="week-block-three"></div>
+			<div class="week-block-four"></div>
+			<div class="week-block-five"></div>
+			<div class="week-block-six"></div>
+			<div class="week-block-seven"></div>
+			<div id="line2"></div>
+		</div>
+	</main>
+	<footer class="main-footer-block">
+		<div class="section-foot">
+			<input class="section-input" type="text" name="task" placeholder="Напишите что-нибудь..."/>
+			<button type="submit" class="add-btn"></button>
+	</div>
+		<!-- <div class="section-input">
+			<input type="text" name="task" placeholder="Task Name" required />
+		</div>
+		<div class="btn-input">
+			<input type="submit" value="+ Add Task" />
+		</div> -->
+	</footer>
+</section>
+	<script src="{% static 'js/week.js'%}"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+</body>
+</html>
