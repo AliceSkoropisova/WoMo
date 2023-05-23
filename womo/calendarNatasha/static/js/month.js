@@ -387,11 +387,6 @@ addEventSubmit.addEventListener("click", ()=>{
 	if(!activeDayElem.classList.contains("event")){
 		activeDayElem.classList.add("event");
 	}
-
-
-
-
-
 });
 
 
