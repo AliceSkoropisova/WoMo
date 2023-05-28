@@ -16,12 +16,12 @@ class Goals(models.Model):
         return self.goal
 
 
-class Podcel(models.Model):
+class Podgoals(models.Model):
     goal = models.ForeignKey(Goals,
                              on_delete=models.CASCADE,
                              max_length=20,
-                             verbose_name='Подцель')
-    podgoal = models.CharField(max_length=20)
+                             verbose_name='цель')
+    podgoal = models.CharField(max_length=20, verbose_name='подцель')
     class Meta:
         ordering = ['goal']
     def __str__(self):

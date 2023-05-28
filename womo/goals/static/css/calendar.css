@@ -1,0 +1,59 @@
+@import url('dycalendar.css');
+
+.calendar{
+    position: fixed;
+    width: 375px;
+    height: 375px;
+    left: 1410px;
+    top: 50px;
+    background: #F7E7FF;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    /* -webkit-box-shadow: 8px 7px 8px 0px rgba(171, 48, 228, 0.54);
+    -moz-box-shadow: 8px 7px 8px 0px rgba(171, 48, 228, 0.54);
+    box-shadow: 8px 7px 8px 0px rgba(171, 48, 228, 0.54); */
+
+    box-shadow: 11px 8px 8px 0px rgba(134, 19, 246, 0.66),
+    11px 12px 8px 0px rgba(174, 0, 255, 0.66) inset;
+    
+}
+#dycalendar, .dycalendar-month-container, .dycalendar-header, .dycalendar-body, .dycalendar-prev-btn .dycalendar-next-btn{
+    background: transparent;
+}
+.dycalendar-header{
+    display: flex;
+    justify-content: space-between;    
+    font-size: 30px;
+    /* font-weight: bold; */
+}
+#dycalendar span{
+    background: transparent;
+}
+#dycalendar table td{
+    background: #cc89eb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#dycalendar {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    margin-top: 10px;    
+}
+.calendar #dycalendar{
+    width: 100%;
+    padding: 20px;
+}
+#dycalendar table{
+    width: 100%;
+    background: transparent;
+}
+#dycalendar .dycalendar-target-date{
+    color: #e6deed;
+    background: #621b83;
+} 

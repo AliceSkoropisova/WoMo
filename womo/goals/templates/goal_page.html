@@ -1,20 +1,21 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style_goal_page.css">
+    <link rel="stylesheet" href="{% static 'css/style_goal_page.css'%}">
     <title>WoMo</title>
 
 </head>
 <body>
     <div class="menu">
         <div class="image-stack__item menu__wallpaper">
-            <img src="img/backgroud_menu.jpg" alt="Фиолетовый фон под меню">
+            <img src="{% static 'img/backgroud_menu.jpg'%}" alt="Фиолетовый фон под меню">
         </div>
         <div class="image-stack__item avatar">
-            <img src="img/avatar.jpg" alt="Собачка на автарку">
+            <img src="{% static 'img/avatar.jpg'%}" alt="Собачка на автарку">
         </div>
         <ul class="menu__list list">
             <li class="menu__item item">
@@ -55,7 +56,7 @@
     </div>
 
     <a href="#5" class="btn__add_note">
-        <img src="img/add_note.svg" alt="" data-modal-btn="modal__create_goal" class="add__goal">
+        <img src="{% static 'img/add_note.svg'%}" alt="" data-modal-btn="modal__create_goal" class="add__goal">
     </a>
 
 
@@ -77,7 +78,7 @@
             <div class="container">
                     <input type="text" class="add__text" placeholder="1) Активно делать проект :)"/>
                     <!-- <a href="#5" class="btn__add_note"> -->
-                        <img src="img/add_note.svg" alt="" class="add__aim" data-btn="atr_add_aim_btn">
+                        <img src="{% static 'img/add_note.svg'%}" alt="" class="add__aim" data-btn="atr_add_aim_btn">
                     <!-- </a> -->
 
                 <div class="wrapper">
@@ -108,7 +109,7 @@
     <!-- список из целей -->
     <div class="list_goals"></div>
 
-
-    <script src="js/goal_create.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/goal_create.js'%}"></script>
 </body>
 </html>

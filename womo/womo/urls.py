@@ -30,5 +30,6 @@ urlpatterns = [
     path('', include('registration.urls')),
     path('', include('todolist.urls')),
     path('', include('notes.urls')),
+    path('', include('goals.urls')),
     #path('registration/', views.register, name='register')
 ]

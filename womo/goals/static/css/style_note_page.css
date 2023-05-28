@@ -1,0 +1,190 @@
+@import 'fonts.css';
+@import 'menu.css';
+@import 'notes.css';
+@import 'calendar.css';
+
+html{
+    box-sizing: border-box;
+    /* zoom: 77%; */
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+*{
+    background: url("../img/background_wallpaper.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+}
+
+.mainHeader h1{
+    margin: 0;
+    position: absolute;
+    width: 399px;
+    height: 75px;
+    left: 510px;
+    top: 60px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 75px;    
+}
+
+.add__note{
+    margin: 0;
+    position: fixed;
+    width: 85px;
+    height: 85px;
+    left: 935px;
+    top: 55px;
+    cursor: pointer;
+}
+
+.container{
+    position: absolute;
+    width: 1445px;
+    height: 878px;
+    left: 425px;
+    top: 160px;
+}
+
+.note__header{
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.notes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.note {
+    background-color: rgb(224, 151, 190);
+    background: rgba(255,  255, 255, 0.5);    
+    padding: 16px;
+    margin: 8px;
+    border-radius: 10px;
+    height: 300px;
+    width: 300px;
+    box-shadow: 2px 2px 5px 2px #4425d069;
+}
+.note p{
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    background: none;
+    font-size: 2rem;
+}
+.note svg{
+    background: none;
+}
+
+.note__actions{
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.note__add{
+    padding: 4px;
+    cursor: pointer;
+}
+
+.note__edit{
+    background: none;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.note__delete{
+    background: none;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}
+
+[id^=note__title__input]{
+    border: none;
+    border-radius: 5px;
+    background: none;  
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 30px;
+    width: 180px;
+}
+[id^=note__title__input]::placeholder {
+    color: #2E1949;
+    opacity: 0.5;
+}
+[id^=note__title__input]:focus {
+    padding-left: 10px;
+    color: #2E1949;
+    background: #F7E7FF;
+    outline: 0;
+    box-shadow: 0 0 0 0.4rem rgba(183, 116, 231, 0.25);
+}
+.TN{
+    height: 210px;
+    width: 260px;
+    border-radius: 5px;
+    background: #e6508f57;
+    /* none;     */
+}
+.TN p{
+    height: 210px;
+    width: 260px;
+    border-radius: 5px;
+    background: none;
+
+    overflow-y: auto;
+}
+
+.TN p::-webkit-scrollbar{
+    width: 5px; /* в основном для вертикальных полос прокрутки */
+    height: 0px; /* в основном для горизонтальных полос прокрутки */
+}
+[id^=note__textarea]::-webkit-scrollbar{
+    width: 0px; /* в основном для вертикальных полос прокрутки */
+    height: 0px; /* в основном для горизонтальных полос прокрутки */
+}
+.TN p::-webkit-scrollbar-thumb, [id^=note__textarea]::-webkit-scrollbar{ /* плашка-бегунок */
+    background: #999;
+}
+  .TN p::-webkit-scrollbar-track, [id^=note__textarea]::-webkit-scrollbar{ /* фон */
+    background: #333;
+}
+
+
+[id^=note__textarea]{
+    width: 260px;
+    height: 210px;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    overflow: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+
