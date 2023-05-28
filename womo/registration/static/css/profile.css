@@ -1,46 +1,189 @@
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/roboto-v30-cyrillic_latin-300.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/roboto-v30-cyrillic_latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v30-cyrillic_latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-300.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v30-cyrillic_latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+/* roboto-regular - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v30-cyrillic_latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/roboto-v30-cyrillic_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v30-cyrillic_latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+/* roboto-500 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/roboto-v30-cyrillic_latin-500.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/roboto-v30-cyrillic_latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v30-cyrillic_latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-500.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v30-cyrillic_latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v30-cyrillic_latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
 body{
-
-    background-color:#B3E5FC;
-    border-radius: 10px;
-
-}
-
-
-.card{
-  width: 400px;
-  border: none;
-  border-radius: 10px;
-
-  background-color: #fff;
-}
-
-
-
-.stats{
-
-      background: #f2f5f8 !important;
-
-    color: #000 !important;
-}
-.articles{
-  font-size:10px;
-  color: #a1aab9;
-}
-.number1{
-  font-weight:500;
-}
-.followers{
-    font-size:10px;
-  color: #a1aab9;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	margin: 0;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.55;/*расстояние между строчками*/
+	background-image: url(../backy.png);
+	background-repeat: no-repeat;/*фон не должен дублироваться на экране, он единственнен*/
+  background-attachment: fixed;/*фиксация картинки по экрану*/
+  background-size: 100% 100%;/*растягивание по ширине и высоте*/
 
 }
-.number2{
-  font-weight:500;
+.inner-part{
+	box-sizing: border-box;
+	position: absolute;
+	width: 861px;
+	height: 1030px;
+	left: calc(50% - 861px/2 + 0.5px);
+	top: -82px;
+	background: rgba(255, 255, 255, 0.01);
+	border: 15px solid rgba(255, 255, 255, 0.5);
+	box-shadow: 0px 4px 50px 8px rgba(0, 0, 0, 0.15);
+	backdrop-filter: blur(15px);
+	border-radius: 25px;
 }
-.rating{
-    font-size:10px;
-  color: #a1aab9;
+.profile-photo{
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 330px;
+	top: 152px;
+	background: url(../prof_photo.png);
 }
-.number3{
-  font-weight:500;
+.profile-name{
+	position: absolute;
+	width: 444px;
+	height: 75px;
+	left: calc(50% - 424px/2);
+	top: 382px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 64px;
+	line-height: 75px;
+	color: #2E1949;
+}
+.profile-login{
+	position: absolute;
+	width: 354px;
+	height: 42px;
+	left: calc(50% - 354px/2);
+	top: 492px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 36px;
+	line-height: 42px;
+	color: #000000;
+}
+.buttons .how-to-btn{
+	position: absolute;
+	width: 520px;
+	height: 100px;
+	left: calc(50% - 520px/2);
+	top: 573px;
+	background: #FFFFFF;
+	box-shadow: inset 5px -5px 20px rgba(67, 67, 117, 0.3);
+	border-radius: 20px;
+}
+.buttons .how-to-btn .how-to-text{
+	position: absolute;
+	width: 399px;
+	height: 38px;
+	left: 99px;
+	top: 30px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 32px;
+	line-height: 38px;
+	color: #434375;
+}
+.buttons .how-to-btn .how-to-img{
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	left: 35px;
+	top: 25px;
+	background: url(../Info.png);
+}
+.buttons .leave-btn{
+	position: absolute;
+	width: 520px;
+	height: 100px;
+	left: calc(50% - 520px/2);
+	top: 708px;
+	background: #FFFDFD;
+	box-shadow: inset 5px -5px 20px rgba(67, 67, 117, 0.3);
+	border-radius: 20px;
+}
+.buttons .leave-btn .leave-text{
+	position: absolute;
+	width: 282px;
+	height: 38px;
+	left: 99px;
+	top: 30px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 32px;
+	line-height: 38px;
+	color: #434375;
+	}
+	.buttons .leave-btn .leave-img{
+		position: absolute;
+		width: 48px;
+		height: 48px;
+		left: 35px;
+		top: 25px;
+		
+		background: url(../iMacExitttt.png);	
+	}
+	.back-btn{
+		position: absolute;
+		width: 96px;
+		height: 96px;
+		left: 74px;
+		top: 492px;
+		
+		background: url(../ChevronRight.png);
+		filter: drop-shadow(0px 4px 4px #2E1949);
+
+	}
+.dots-btn{
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: calc(50% - 200px/2);
+	top: 897px;
+	
+	background: url(../Dots.png);
 }
