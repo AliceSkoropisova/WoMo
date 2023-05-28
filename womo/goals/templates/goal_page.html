@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_goal_page.css">
+    <title>WoMo</title>
+
+</head>
+<body>
+    <div class="menu">
+        <div class="image-stack__item menu__wallpaper">
+            <img src="img/backgroud_menu.jpg" alt="Фиолетовый фон под меню">
+        </div>
+        <div class="image-stack__item avatar">
+            <img src="img/avatar.jpg" alt="Собачка на автарку">
+        </div>
+        <ul class="menu__list list">
+            <li class="menu__item item">
+                <a href="index.html" class="menu__link link">
+                    <img src="img/arms_up.svg" alt="иконка профиля">
+                    <span>Мой день</span>
+                </a>                    
+            </li>
+            <li class="menu__item item">
+                <a href="#2" class="menu__link link">
+                    <img src="img/calendar.svg" alt="иконка календаря">
+                    <span>Календарь</span>
+                </a>
+            </li>
+            <li class="menu__item item">
+                <a href="goal_page.html" class="menu__link link">
+                    <img src="img/goal.svg" alt="иконка целей">
+                    <span>Цели</span>
+                </a>                    
+            </li>
+            <li class="menu__item item">
+                <a href="note_page.html" class="menu__link link">
+                    <img src="img/notes.svg" alt="иконка заметок">
+                    <span>Заметки</span>
+                </a>
+            </li>
+        </ul>
+        <a href="#" class="link__me">
+            <span>Я</span>
+        </a>
+        <a href="#" class="link__about">
+            <span>О нас</span>
+        </a>
+    </div>
+
+    <div class="mainHeader">
+        <h1>Мои цели</h1>
+    </div>
+
+    <a href="#5" class="btn__add_note">
+        <img src="img/add_note.svg" alt="" data-modal-btn="modal__create_goal" class="add__goal">
+    </a>
+
+
+    <div data-modal-window="modal__create_goal" class="modal__side_goal">
+        <div class="resume">
+            <input type="button" name="resumeData" class="resume_goal" value="Добавить"/>
+        </div>
+
+        <div class="modal_content">
+            <div class="modal_inner">
+                <div class="modal_title">
+                    <input type="text" maxlength="20" class="goal_header" placeholder="Моя цель..."/>
+                </div>
+                <div class="close_modal_window">
+                    &times;
+                </div>
+            </div>
+
+            <div class="container">
+                    <input type="text" class="add__text" placeholder="1) Активно делать проект :)"/>
+                    <!-- <a href="#5" class="btn__add_note"> -->
+                        <img src="img/add_note.svg" alt="" class="add__aim" data-btn="atr_add_aim_btn">
+                    <!-- </a> -->
+
+                <div class="wrapper">
+                    <ul class="input_goal"></ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="watching">
+        <div class="side__modal_content">
+            <div class="side__modal_inner">
+                <div class="side__modal_title">
+                    <p id="side___header">Название цели</p>             
+                </div>
+                <div class="side__close_modal_window">
+                    &times;
+                </div>
+            </div>
+            <div class="side__list">
+                <ul class="concrete__goal"></ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- список из целей -->
+    <div class="list_goals"></div>
+
+
+    <script src="js/goal_create.js"></script>
+</body>
+</html>

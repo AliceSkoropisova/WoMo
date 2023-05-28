@@ -51,7 +51,7 @@ body{
 	justify-content: center;
 	font-family: 'Roboto', sans-serif;
 	line-height: 1.55;/*расстояние между строчками*/
-	background-image: url(../backy.png);
+	background-image: url("../img/backy.png");
 	background-repeat: no-repeat;/*фон не должен дублироваться на экране, он единственнен*/
   background-attachment: fixed;/*фиксация картинки по экрану*/
   background-size: 100% 100%;/*растягивание по ширине и высоте*/
@@ -76,7 +76,7 @@ body{
 	height: 200px;
 	left: 330px;
 	top: 152px;
-	background: url(../prof_photo.png);
+	background: url("../img/prof_photo.png");
 }
 .profile-name{
 	position: absolute;
@@ -133,7 +133,7 @@ body{
 	height: 48px;
 	left: 35px;
 	top: 25px;
-	background: url(../Info.png);
+	background: url("../img/Info.png");
 }
 .buttons .leave-btn{
 	position: absolute;
@@ -165,7 +165,7 @@ body{
 		left: 35px;
 		top: 25px;
 		
-		background: url(../iMacExitttt.png);	
+		background: url("../img/iMacExitttt.png");
 	}
 	.back-btn{
 		position: absolute;
@@ -174,7 +174,7 @@ body{
 		left: 74px;
 		top: 492px;
 		
-		background: url(../ChevronRight.png);
+		background: url("../img/ChevronRight.png");
 		filter: drop-shadow(0px 4px 4px #2E1949);
 
 	}
@@ -185,5 +185,5 @@ body{
 	left: calc(50% - 200px/2);
 	top: 897px;
 	
-	background: url(../Dots.png);
+	background: url("../img/Dots.png");
 }

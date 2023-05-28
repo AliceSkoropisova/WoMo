@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 </head>
 <body>
 	<section class="inner-part">
@@ -13,10 +14,11 @@
 
 		</div>
 		<div class="profile-name">
-			Имя Фамилия
+			<span>{{ user.first_name }}</span>
+			<span>{{ user.last_name }}</span>
 		</div>
 		<div class="profile-login">
-			oneoftheSPIIICEGIRL
+			<span>{{ user.username }}</span>
 		</div>
 		<div class="buttons">
 			<div class="how-to-btn">
@@ -24,8 +26,12 @@
 				<div class="how-to-text">Как пользоваться WoMo?</div>
 			</div>
 			<div class="leave-btn">
-				<div class="leave-img"></div>
-				<div class="leave-text">Покинуть аккаунт</div>
+				<li class="leave-img">
+
+                	<a href="{% url 'registration:logout' %}" class="menu__link link">
+                    	<span>Покинуть аккаунт</span>
+                	</a>
+            	</li>
 			</div>
 		</div>
 		<div class="dots-btn"></div>
