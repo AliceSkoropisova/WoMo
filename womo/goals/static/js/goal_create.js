@@ -61,6 +61,8 @@ function displayHeaders(){
 }
 // обработка всех функций внутри модального окна
 btns.addEventListener('click', function(){
+    let side_window = document.querySelector(".watching");
+    side_window.style.display = "none";
     num_subpoint = 0;
 
     modal.style.display = "block";
@@ -342,6 +344,7 @@ mainList.addEventListener('click', function(event){
                 outGOALS.forEach(function(item){
                     if (item.goals_todo === valueLabel){
                         item.checked = !item.checked;
+                        console.log(item);
                         localStorage.setItem('outGOALS', JSON.stringify(outGOALS));
                     }
                 });

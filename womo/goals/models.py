@@ -10,6 +10,7 @@ class Goals(models.Model):
     goal = models.CharField( max_length=20,
                              help_text="Цель",
                              verbose_name="Цель")
+
     class Meta:
         ordering = ['user']
     def __str__(self):

@@ -14,7 +14,7 @@ def logout_view(request):
 
 @login_required
 def profile_view(request):
-    return render(request, 'profile/profile.html')
+    return render(request, "profile/profile.html")
 
 
 class RegisterView(FormView):

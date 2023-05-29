@@ -13,8 +13,8 @@
 
     <form class="box"  method="post" >
         {% csrf_token %}
-            <a class="button_cancel" href="{% url 'todolist:add_delo' %}">Отмена</a>
-            <input type="submit" class="btn__createAcc" href="{% url 'todolist:add_delo' %}" value="Создать аккаунт"/>
+            <a class="button_cancel" href="{% url 'registration:login' %}">Отмена</a>
+            <input type="submit" class="btn__createAcc" href="{% url 'registration:login' %}" value="Создать аккаунт"/>
         <div class="data__entry">
             <div class="descriptions">
                 <span class="span__first_name">Имя</span>
@@ -23,8 +23,8 @@
                 <span class="span__password">Пароль</span>
             </div>
             <div class="input__text">
-                <input type="text" class="entry_name" name="first_name" placeholder="Введите имя..."/>
-                <input type="text" class="entry_surname" name="last_name" placeholder="Введите фамилию..."/>
+                <input type="text" class="entry_first_name" name="first_name" placeholder="Введите имя..."/>
+                <input type="text" class="entry_last_name" name="last_name" placeholder="Введите фамилию..."/>
                 <input type="text" class="entry_login" name="username" placeholder="Введите логин..."/>
                 <input type="password" class="entry_password" name="password1" placeholder="Введите пароль..."/>
                 <input type="password" class="entry_password" name="password2" placeholder="Подтвердите пароль..."/>

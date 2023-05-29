@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="menu__item item">
-                <a href="#3" class="menu__link link">
+                <a href="{% url 'goals:goals' %}" class="menu__link link">
                     <img src="{% static 'img/goal.svg'%}" alt="иконка целей">
                     <span>Цели</span>
                 </a>
@@ -46,7 +46,7 @@
                 </a>
             </li>
         </ul>
-        <a href="#" class="link__me">
+        <a href="{% url 'registration:profile' %}" class="link__me">
             <span>{{ user.username }}</span>
         </a>
         <a href="#" class="link__about">
