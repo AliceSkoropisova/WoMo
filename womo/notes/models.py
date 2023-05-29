@@ -12,7 +12,7 @@ class Notes(models.Model):
                             help_text="Введите Заголовок",
                             verbose_name="Заголовок")
     text = models.CharField(max_length=380, verbose_name = "Добавьте заметку")
-
+    num = models.CharField(max_length=30, verbose_name = "ID", default = '')
     class Meta:
         verbose_name = 'Заметка'
         verbose_name_plural = 'Заметки'

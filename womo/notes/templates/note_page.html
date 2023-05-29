@@ -1,8 +1,9 @@
-
 {% extends "base.html" %}
 {% load static %}
 
-    {% block link %}<link rel="stylesheet" href="{% static 'css/style_note_page.css' %}">{% endblock %}
+    {% block link %}<link rel="stylesheet" href="{% static 'css/style_note_page.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet" />
+{% endblock %}
   {% block content %}
     <div class="mainHeader">
         <h1>Мои заметки</h1>
@@ -26,5 +27,8 @@
 
         <div class="notes"></div>
     </div>
-    <script src="{% static 'js/memo.js'%}"></script>
+    <div id = "ID"></div>
+    <script> ID = {{user.id}}; </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/memo_for_bd.js'%}"></script>
 {% endblock %}

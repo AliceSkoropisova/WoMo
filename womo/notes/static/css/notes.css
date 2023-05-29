@@ -32,6 +32,7 @@
     margin-bottom: 30px;
     background: #B59EC0;
 }
+
 .todo li {
     width: 650px;
     padding-top: 20px;
@@ -44,9 +45,15 @@
     background: #B59EC0;
     /* opacity: 0.7; */
 }
+
 .todo label{
     background: none;
 }
 .important{
     font-weight: bold;
 }
+
+
+  
+  
+  
