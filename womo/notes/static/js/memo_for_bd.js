@@ -73,11 +73,6 @@ function viewNote(param) {
                     },
                     success: function (data) {
                         console.log(noteArr.length);
-                        for(i=0; i <= noteArr.length; i++)
-                        {
-                            noteArr[i].pop();
-                            console.log(8);
-                        }
                         for(i = 0; i<data.data.length; i++)
                         {
                             noteArr[i]=data[i].num;
