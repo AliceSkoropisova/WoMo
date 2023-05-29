@@ -145,7 +145,8 @@ body{
 	box-shadow: inset 5px -5px 20px rgba(67, 67, 117, 0.3);
 	border-radius: 20px;
 }
-.buttons .leave-btn .leave-text{
+.buttons .leave-btn .leave-text a{
+    text-decoration: none;
 	position: absolute;
 	width: 282px;
 	height: 38px;
@@ -174,7 +175,6 @@ body{
 		left: 74px;
 		top: 492px;
 		
-		background: url("../img/ChevronRight.png");
 		filter: drop-shadow(0px 4px 4px #2E1949);
 
 	}

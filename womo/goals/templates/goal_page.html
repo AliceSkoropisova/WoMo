@@ -1,56 +1,7 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style_goal_page.css'%}">
-    <title>WoMo</title>
-
-</head>
-<body>
-    <div class="menu">
-        <div class="image-stack__item menu__wallpaper">
-            <img src="{% static 'img/backgroud_menu.jpg'%}" alt="Фиолетовый фон под меню">
-        </div>
-        <div class="image-stack__item avatar">
-            <img src="{% static 'img/avatar.jpg'%}" alt="Собачка на автарку">
-        </div>
-        <ul class="menu__list list">
-            <li class="menu__item item">
-                <a href="index.html" class="menu__link link">
-                    <img src="img/arms_up.svg" alt="иконка профиля">
-                    <span>Мой день</span>
-                </a>                    
-            </li>
-            <li class="menu__item item">
-                <a href="#2" class="menu__link link">
-                    <img src="img/calendar.svg" alt="иконка календаря">
-                    <span>Календарь</span>
-                </a>
-            </li>
-            <li class="menu__item item">
-                <a href="goal_page.html" class="menu__link link">
-                    <img src="img/goal.svg" alt="иконка целей">
-                    <span>Цели</span>
-                </a>                    
-            </li>
-            <li class="menu__item item">
-                <a href="note_page.html" class="menu__link link">
-                    <img src="img/notes.svg" alt="иконка заметок">
-                    <span>Заметки</span>
-                </a>
-            </li>
-        </ul>
-        <a href="#" class="link__me">
-            <span>Я</span>
-        </a>
-        <a href="#" class="link__about">
-            <span>О нас</span>
-        </a>
-    </div>
-
+     {% block link %}<link rel="stylesheet" href="{% static 'css/style_goal_page.css'%}">{% endblock %}
+    {% block content %}
     <div class="mainHeader">
         <h1>Мои цели</h1>
     </div>
@@ -111,5 +62,4 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'js/goal_create.js'%}"></script>
-</body>
-</html>
+{% endblock %}

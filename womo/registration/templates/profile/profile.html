@@ -26,16 +26,18 @@
 				<div class="how-to-text">Как пользоваться WoMo?</div>
 			</div>
 			<div class="leave-btn">
-				<li class="leave-img">
-
-                	<a href="{% url 'registration:logout' %}" class="menu__link link">
-                    	<span>Покинуть аккаунт</span>
+				<div class="leave-img"></div>
+					<div class="leave-text">
+                	<a href="{% url 'registration:logout' %}">
+                    	Покинуть аккаунт
                 	</a>
-            	</li>
+						</div>
 			</div>
 		</div>
 		<div class="dots-btn"></div>
 	</section>
-	<div class="back-btn"></div>
+	<a href="{% url 'todolist:add_delo' %}">
+<img src="{% static 'img/ChevronRight.png' %}" class="back-btn" alt="">
+</a>
 </body>
 </html>
