@@ -144,7 +144,7 @@ body{
 .important{
     font-weight: bold;
 }
-.MAIN_checkbox, .goals_checkbox{
+.MAIN_checkbox{
     display: none;
 }
 
