@@ -1,6 +1,7 @@
 const notesEl = document.querySelector('.notes');
 const addBtn = document.querySelector('.add__note');
 const noteArr = JSON.parse(localStorage.getItem('noteArr')) || {};
+let najato = true;
 function getCookie(cname) {
      name = cname + "=";
      ca = document.cookie.split(';');
@@ -13,9 +14,9 @@ function getCookie(cname) {
      return "";
 }
 viewNote(noteArr);
-function setitem(param) {
+/*function setitem(param) {
     localStorage.setItem('noteArr', JSON.stringify(param));
-}
+}*/
 
 function getitem() {
     JSON.parse(localStorage.getItem('noteArr'));
@@ -30,11 +31,31 @@ document.onclick = function(event) {
     if (event.target.classList.contains('note__delete') || event.target.classList.contains('fa-trash')) {
         const dellIt = event.target.getAttribute('data-dell');
         delete noteArr[dellIt];
-        viewNote(noteArr);
-        setitem(noteArr);
+
+        $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        action: 'delite',
+                        user_id: ID,
+                        item: dellIt,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it work");
+                    },
+                    error: function (data) {
+                        console.log("it didnt work");
+                    }
+                });
+                viewNote(noteArr);
+        //setitem(noteArr);
     }
     if (event.target.classList.contains('note__edit') || event.target.classList.contains('fa-pen-to-square')) {
         const editBtn = event.target.getAttribute('data-edit');
+        console.log(editBtn);
         const titleVall = document.querySelector(`#note-title-input[data-dell=${editBtn}]`).value;
         const descVall = document.querySelector(`#note-textarea[data-dell=${editBtn}]`).value;
 
@@ -42,8 +63,31 @@ document.onclick = function(event) {
             document.querySelectorAll(`.hidden-readonly[data-dell=${editBtn}]`).forEach(function(index) {
                 index.setAttribute('readonly', true);
                 setText(editBtn, titleVall, descVall);
-                console.log(noteArr[editBtn]);
-                setitem(noteArr);
+                console.log(editBtn);
+                najato=!najato;
+                if(najato){
+                $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        action: 'post',
+                        user_id: ID,
+                        item: editBtn,
+                        topic: titleVall,
+                        text: descVall,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it work");
+                    },
+                    error: function (data) {
+                        console.log("it didnt work");
+                    }
+                });
+                }
+                //setitem(noteArr);
 
             })
         } else {
@@ -72,21 +116,12 @@ function viewNote(param) {
                         csrfmiddlewaretoken: getCookie('csrftoken')
                     },
                     success: function (data) {
-                        console.log(noteArr.length);
-                        for(i=0; i <= noteArr.length; i++)
-                        {
-                            noteArr[i].pop();
-                            console.log(8);
-                        }
                         for(i = 0; i<data.data.length; i++)
                         {
-                            noteArr[i]=data[i].num;
-                            noteArr[i][0]=data[i].topic;
-                            noteArr[i][1]=data[i].text;
-                            console.log(9);
+                            noteArr[`${data.data[i].num}`]= ['', ''];
+                            noteArr[`${data.data[i].num}`][0]=data.data[i].topic;
+                            noteArr[`${data.data[i].num}`][1]=data.data[i].text;
                         }
-                        console.log(noteArr);
-                        console.log(7);
                     },
                     error: function (data) {
                         console.log("it didnt work");
@@ -121,6 +156,6 @@ function viewNote(param) {
 
 addBtn.addEventListener('click', (e) => {
     noteArr[`item-${(new Date()).getTime()}`] = ['', ''];
-    setitem(noteArr);
+    //setitem(noteArr);
     viewNote(noteArr);
 });
