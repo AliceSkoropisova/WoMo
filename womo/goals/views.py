@@ -15,8 +15,14 @@ def add_goal(request):
         user = User.objects.get(id=user_id)
         goal = Goals.objects.create(user = user, goal = title)
         i = 0
+        stro = 'f'
         while i < len(podgoals):
-            podgoals_instance = Podgoals.objects.create(goal = goal, podgoal = podgoals[i]['goals_todo'], checked = podgoals[i]['checked'])
+
+            if podgoals[i]['checked'] == False:
+                stro = 'false'
+            else:
+                stro = 'true'
+            podgoals_instance = Podgoals.objects.create(user = user, goal = goal, podgoal = podgoals[i]['goals_todo'], checked = stro, index = str(i))
             i+=1
         return JsonResponse('Goal is written', safe=False)
     elif request.GET.get('action') == 'get':
@@ -31,6 +37,21 @@ def add_goal(request):
             'podgoals': list(podgoals)
         }
         return JsonResponse(data, safe=False)
+    elif request.POST.get('action') == 'change':
+        title = request.POST.get('title')
+        podgoals = request.POST.get('podgoals')
+        index = request.POST.get('index')
+        goal = Goals.objects.get(goal = title)
+        user_id = request.POST.get('user_id')
+        user = User.objects.get(id=user_id)
+        change = Podgoals.objects.get(user=user, goal = goal, podgoal = podgoals, index = index)
+        if change.checked == 'false':
+            print("fuck)")
+            change.checked = 'true'
+        else:
+            change.checked = 'false'
+        change.save()
+        return JsonResponse('Goal is written', safe=False)
     return render(request, 'goal_page.html')
 
 

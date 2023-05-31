@@ -161,6 +161,7 @@ btns.addEventListener('click', function(){
 
     // нажатие на кнопку Добавить
     resumeData.addEventListener('click', function(){
+
         // до 119 строки проверка, что цели с таким заголовком не существует или название цели не пустая строка
         let flag = 0;
         for (let j = 0; j < arr_for_DB.length && flag === 0; j++){
@@ -234,6 +235,8 @@ btns.addEventListener('click', function(){
             // });
 
             // очищаем массив подцелей, чтобы он был пустой при добавлении новой цели
+            //displayHeaders();
+            //static_circle();
             while(goalsList.length > 0){
                 goalsList.shift();
             }
@@ -241,9 +244,15 @@ btns.addEventListener('click', function(){
             name_of_Goal.value = "";
             addGoal.value = "";
             modal.style.display = "none";
-            //displayHeaders();
-            location.reload();
+            let mainList = document.querySelector(".list_goals");
 
+            let elements_of_mainList = mainList.querySelectorAll('[id^="aimHeader_"]');
+
+            let circularProgress = mainList.querySelectorAll('[id^="aimProgress_"]');
+            /////
+            let progressValue = mainList.querySelectorAll('[id^="aimProgressValue_"]');
+
+            displayHeaders();
         }
 
     });
@@ -461,39 +470,21 @@ mainList.addEventListener('click', function(event){
             // ПЕРВАЯ ЦЕЛЬ КОРРЕКТНА, А ДАЛЬШЕ ПРИ НАЖАТИИ НА ДРУГУЮ ЦЕЛЬ 2 РАЗА item.checked = !item.checked
             // ПОТОМ 3 И ТД
             // ОШИБКУ ПОЙМАТЬ НЕ МОГУ ВОЗМОЖНО С БД БУДЕТ БЕЗ ЭТОЙ ОШИБКИ
+            console.log('1111111111111111');
+            console.log(index);
             side_goalsList.addEventListener('change', function(event){
                 let idInput = event.target.getAttribute('id');
                 let stop = 1;
                 for (let k = 0; k < arr_for_DB.length && stop; k++){
                     if (arr_for_DB[k].header === header_sideWindow.innerHTML){
                         let j = parseInt(idInput.split("_")[2], 10);
-
-                        $.ajax({
-                    method: 'POST',
-                    async: false,
-                    url: '',
-                    dataType: 'json',
-                    data: {
-                        action: 'change',
-                        user_id: ID,
-                        title: arr_for_DB[k].header,
-                        podgoals: arr_for_DB[k].subpoints[j].goals_todo,
-                        index: j,
-                        csrfmiddlewaretoken: getCookie('csrftoken')
-                    },
-                    success: function (data) {
-                        console.log("it work");
-                    },
-                    error: function (data) {
-                        console.log("it didnt work");
-                    }
-                });
-
+                        arr_for_DB[k].subpoints[j].checked = !arr_for_DB[k].subpoints[j].checked;
+                        localStorage.setItem('arr_for_DB', JSON.stringify(arr_for_DB));
                         stop = 0;
-
                     }
                 }
-
+                console.log('2222222');
+                console.log(index);
                 console.log(progressValue);
                 if (progressValue[index].textContent !== "DONE!"){
                     let newStartProgressValue = progressValue[index].textContent.split("%")[0];

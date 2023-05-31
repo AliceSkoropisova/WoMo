@@ -29,6 +29,7 @@ class Podgoals(models.Model):
                              verbose_name='цель')
     podgoal = models.CharField(max_length=20, verbose_name='подцель')
     checked = models.CharField(max_length = 5, verbose_name = "Сделано", default = 'false')
+    index = models.CharField(max_length = 5, verbose_name = "Индекс", default = '4')
     class Meta:
         ordering = ['goal']
     def __str__(self):
