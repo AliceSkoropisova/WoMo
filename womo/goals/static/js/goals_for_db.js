@@ -64,14 +64,29 @@ function displayHeaders(){
                     },
                     success: function (data) {
                         arr_for_DB.length = 0;
-                        console.log(data.goals);
-                        console.log(data.podgoals);
-
-                        for(i=0; i<data.data.length; i++)
+                        podgoals = [];
+                        for(i=0; i<data.goals.length; i++)
                         {
-
-
+                            for(j=0; j<data.podgoals.length; j++)
+                            {
+                                podgoals.length = 0;
+                                if(data.podgoals[j].goal == data.goals[i].id)
+                                {
+                                    let newAim = {
+                                        goals_todo: data.podgoals[j].podgoal,
+                                        checked: data.podgoals[j].checked,
+                                        important: false
+                                    };
+                                    podgoals.push(newAim);
+                                }
+                            }
+                            let newGOAL_FOR_DB = {
+                                header: data.goals[i].goal,
+                                subpoints: podgoals
+                            };
+                            arr_for_DB.push(newGOAL_FOR_DB);
                         }
+                        console.log(arr_for_DB);
                     },
                     error: function (data) {
                         console.log("it didnt work");

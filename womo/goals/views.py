@@ -23,16 +23,12 @@ def add_goal(request):
         user_id = request.GET.get('user_id')
         user = User.objects.get(id=user_id)
         goals = Goals.objects.filter(user = user)
-        #goals = goals.values('goal')
-        for g in goals:
-            a = Podgoals.objects.filter(goal=g)
-            #b = a.values('podgoal', 'checked')
-            print(b)
-        #a = Podgoals.objects.filter(user=user)
-        #b = a.values('goal', 'podgoal', 'checked')
+        goals = goals.values('goal', 'id')
+        podgoals = Podgoals.objects.filter(user = user)
+        podgoals = podgoals.values('goal', 'podgoal', 'checked')
         data = {
             'goals': list(goals),
-            #'podgoals': list(b)
+            'podgoals': list(podgoals)
         }
         return JsonResponse(data, safe=False)
     return render(request, 'goal_page.html')

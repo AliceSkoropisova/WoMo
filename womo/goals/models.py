@@ -18,6 +18,11 @@ class Goals(models.Model):
 
 
 class Podgoals(models.Model):
+    user = models.ForeignKey(User,
+                           on_delete=models.CASCADE,
+                           max_length=10,
+                           verbose_name='ID_user',
+                           default = '4')
     goal = models.ForeignKey(Goals,
                              on_delete=models.CASCADE,
                              max_length=20,
