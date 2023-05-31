@@ -4,6 +4,7 @@ from .models import Goals, Podgoals
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
+from django.forms import model_to_dict
 
 @login_required
 def add_goal(request):
@@ -19,21 +20,19 @@ def add_goal(request):
             i+=1
         return JsonResponse('Goal is written', safe=False)
     elif request.GET.get('action') == 'get':
-        count = Goals.objects.count()
-        goals = Goals.objects.all()
-        goals = goals.values('goal')
-        i = 0
-        list = []
-        for goal in goals:
-            a = Podgoals.objects.filter(goal = goal)
-            b = a.values('podgoal', 'checked')
-            list.append({'goal': goal, 'podgoals_list': b})
-            i+=1
-        print(list)
-        #data = Podgoals.objects.filter(user=request.GET.get('user_id'))
-        #goals = data.values('goal', 'podgoal', 'checked')
+        user_id = request.GET.get('user_id')
+        user = User.objects.get(id=user_id)
+        goals = Goals.objects.filter(user = user)
+        #goals = goals.values('goal')
+        for g in goals:
+            a = Podgoals.objects.filter(goal=g)
+            #b = a.values('podgoal', 'checked')
+            print(b)
+        #a = Podgoals.objects.filter(user=user)
+        #b = a.values('goal', 'podgoal', 'checked')
         data = {
-            'data': list
+            'goals': list(goals),
+            #'podgoals': list(b)
         }
         return JsonResponse(data, safe=False)
     return render(request, 'goal_page.html')

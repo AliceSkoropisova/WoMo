@@ -64,12 +64,12 @@ function displayHeaders(){
                     },
                     success: function (data) {
                         arr_for_DB.length = 0;
+                        console.log(data.goals);
+                        console.log(data.podgoals);
+
                         for(i=0; i<data.data.length; i++)
                         {
-                            let newGOAL_FOR_DB = {
-                header: name_of_Goal.value, // название цели
-                subpoints: goalsList // массив с элементами подцелей (внутри название подцели checked important)
-            };
+
 
                         }
                     },
