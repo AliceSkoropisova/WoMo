@@ -43,11 +43,13 @@
                     <input type="text" maxlength="15" class="entry_name" name="first_name" required placeholder="Введите имя..."/>
                     <input type="text" maxlength="15" class="entry_surname" name="last_name" required placeholder="Введите фамилию..."/>
                     <input type="text" maxlength="15" class="entry_login" name="username" required placeholder="Введите логин..."/>
-                    <input type="password" maxlength="10" class="entry_password" name="password1" required placeholder="Введите пароль..."/>
-                    <input type="password" maxlength="10" class="entry_rep_password" name="password2" required placeholder="Подтвертите пароль..."/>
-                    <input type="hidden" name="avatar" id="avatar"></p>
-                </div>
+                    <input type="password" maxlength="20" class="entry_password" name="password1" required placeholder="Введите пароль..."/>
+                    <input type="password" maxlength="20" class="entry_rep_password" name="password2" required placeholder="Подтвертите пароль..."/>
 
+                </div>
+                <div class="inp">
+                <input type="hidden" name="avatar" id="avatar"></p>
+                </div>
             </div>
             {{ form.errors }}
         </form>

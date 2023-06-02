@@ -41,7 +41,7 @@ def add_delo_Natasha(request):
         return JsonResponse('Deleted', safe=False)
     if request.path == '/calendar/':
         print('kapez')
-        return render(request, 'month.html')
+        return render(request, 'base.html')
     else:
         print('ne kapez')
         return render(request, 'try.html')

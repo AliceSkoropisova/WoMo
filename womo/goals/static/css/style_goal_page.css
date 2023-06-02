@@ -147,4 +147,9 @@ body{
 .MAIN_checkbox, .goals_checkbox{
     display: none;
 }
+#circle-container {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+}
 

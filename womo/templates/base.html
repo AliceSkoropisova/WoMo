@@ -2,60 +2,70 @@
 {% load static %}
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   {% block link %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
-    {% block title %}<title>WoMo</title>{% endblock %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	{% block title %}<title>WoMo App</title>{% endblock %}
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+	<!-- <link type="text/css" rel="stylesheet" href="/css/menu.css">  -->
+	{% block link %}
+	<link  href='https://unpkg.com/css.gg@2.0.0/icons/css/shape-circle.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/add.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+	{% endblock %}
+
 </head>
 <body>
 {% block menu %}
-    <section class="menu">
-        <div class="image-stack__item menu__wallpaper">
-            <img src="{% static 'img/backgroud_menu.jpg' %}" alt="Фиолетовый фон под меню">
-        </div>
-        <div class="image-stack__item avatar">
-            <img src="{{ user.avatar }}" alt="Собачка на автарку">
-
-        </div>
-        <!-- основное меню -->
-        <ul class="menu__list list">
-            <!-- элемент меню -->
-            <li class="menu__item item">
-                <!-- ссылка меню -->
-                <a href="{% url 'todolist:add_delo' %}" class="menu__link link">
-                    <img src="{% static 'img/arms_up.svg'%}" alt="иконка профиля">
-                    <span>Мой день</span>
-                </a>
-            </li>
-            <li class="menu__item item">
-                <a href="{% url 'calendar:add_delo_Natasha_month' %}" class="menu__link link">
-                    <img src="{% static 'img/calendar.svg'%}" alt="иконка календаря">
-                    <span>Календарь</span>
-                </a>
-            </li>
-            <li class="menu__item item">
-                <a href="{% url 'goals:goals' %}" class="menu__link link">
-                    <img src="{% static 'img/goal.svg'%}" alt="иконка целей">
-                    <span>Цели</span>
-                </a>
-            </li>
-            <li class="menu__item item">
-                <a href="{% url 'notes:notes' %}" class="menu__link link">
-                    <img src="{% static 'img/notes.svg'%}" alt="иконка заметок">
-                    <span>Заметки</span>
-                </a>
-            </li>
-        </ul>
-        <a href="{% url 'registration:profile' %}" class="link__me">
-            <span>{{ user.username }}</span>
-        </a>
-        <a href="#" class="link__about">
-            <span>О нас</span>
-        </a>
-    </section>
+	<section class="menu">
+		<div class="first">
+			<div class="avatar">
+					<img src="/{{ user.avatar }}" alt="Собачка на автарку">
+			</div>
+			<a href="{% url 'registration:profile' %}" class="link__me">
+				<span>{{ user.username }}</span>
+			</a>
+	</div>
+		<ul class="menu__list list">
+				<li class="menu__item item">
+						<a href="{% url 'todolist:add_delo' %}" class="menu__link link">
+								<img src="{% static 'img/arms_up.svg'%}" alt="иконка профиля">
+								<span>Мой день</span>
+						</a>                    
+				</li>
+				<li class="menu__item item">
+						<a href="{% url 'calendar:add_delo_Natasha_month' %}" class="menu__link link">
+								<img src="{% static 'img/calendar.svg'%}" alt="иконка календаря">
+								<span>Календарь</span>
+						</a>
+				</li>
+				<li class="menu__item item">
+						<a href="{% url 'goals:goals' %}" class="menu__link link">
+								<img src="{% static 'img/goal.svg'%}" alt="иконка целей">
+								<span>Цели</span>
+						</a>                    
+				</li>
+				<li class="menu__item item">
+						<a href="{% url 'notes:notes' %}" class="menu__link link">
+								<img src="{% static 'img/notes.svg'%}" alt="иконка заметок">
+								<span>Заметки</span>
+						</a>
+				</li>
+				<li class="menu__item item">
+					<a href="#5" class="menu__link link">
+							<img src="{% static 'img/statya.svg'%}" alt="иконка статьи">
+							<span>О коровах</span>
+					</a>
+			</li>
+		</ul>
+		<a href="{% url 'registration:logout' %}" class="link__about">
+				<span>Выйти</span>
+		</a>
+</section>
 {% endblock %}
 {% block content %}
+
 
 {% endblock %}
 </body>

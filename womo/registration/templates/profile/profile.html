@@ -11,7 +11,7 @@
 <body>
 	<section class="inner-part">
 		<div class="profile-photo">
-
+			<img src="/{{ user.avatar }}" alt="Собачка на автарку">
 		</div>
 		<div class="profile-name">
 			<span>{{ user.first_name }}</span>
@@ -23,7 +23,7 @@
 		<div class="buttons">
 			<div class="how-to-btn">
 				<div class="how-to-img"></div>
-				<div class="how-to-text">Как пользоваться WoMo?</div>
+				<div class="how-to-text"><a href="instruction.html">Как пользоваться WoMo?</a></div>
 			</div>
 			<div class="leave-btn">
 				<div class="leave-img"></div>
@@ -36,7 +36,7 @@
 		</div>
 		<div class="dots-btn"></div>
 	</section>
-	<a href="{% url 'todolist:add_delo' %}">
+	<a href="{% url 'todolist:add_delo' %}" class="backing">
 <img src="{% static 'img/ChevronRight.png' %}" class="back-btn" alt="">
 </a>
 </body>

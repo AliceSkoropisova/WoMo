@@ -47,59 +47,6 @@ function displayMessages(){
     goals_todo.innerHTML = displayMessage;
 }
 
-function db(){
-$.ajax({
-                    method: 'GET',
-                    async: false,
-                    url: '',
-                    dataType: 'json',
-                    data: {
-                        action: 'get',
-                        user_id: ID,
-                        csrfmiddlewaretoken: getCookie('csrftoken')
-                    },
-                    success: function (data) {
-                        arr_for_DB.length = 0;
-                        podgoals = [];
-
-                        for(i=0; i<data.goals.length; i++)
-                        {
-                            podgoals = [];
-                            for(j=0; j<data.podgoals.length; j++)
-                            {
-                                if(data.podgoals[j].goal == data.goals[i].id)
-                                {
-                                    if(data.podgoals[j].checked == 'false')
-                                    {
-                                        ch= false;
-                                    }
-                                    else
-                                    {
-                                        ch= true;
-                                    }
-                                    let newAim = {
-                                        goals_todo: data.podgoals[j].podgoal,
-                                        checked: ch,
-                                        important: false
-                                    };
-                                    podgoals.push(newAim);
-                                }
-                            }
-                            let newGOAL_FOR_DB = {
-                                header: data.goals[i].goal,
-                                subpoints: podgoals
-                            };
-                            arr_for_DB.push(newGOAL_FOR_DB);
-
-                        }
-                    },
-                    error: function (data) {
-                        console.log("it didnt work");
-                    }
-          });
-
-}
-
 // выводим названия целей на самой странице целей вне модального окна
 function displayHeaders(progressValue){
     $.ajax({
@@ -152,7 +99,6 @@ function displayHeaders(progressValue){
                     }
           });
 
-
     let displayHeader = '';
     if (arr_for_DB.length > 0){
         arr_for_DB.forEach(function(item, i){
@@ -171,6 +117,8 @@ function displayHeaders(progressValue){
     }
     outLIST_AIMS.innerHTML = displayHeader;
 }
+
+
 
 
 // обработка всех функций внутри модального окна
@@ -438,8 +386,7 @@ function circles(which_circle, start_pos){
     }
 }
 circles(-1, -1);
-console.log("progressValue");
-console.log(progressValue);
+
 
 
 // удаление цели при нажатии правой кнопкой мыши и клавиши ctrl
@@ -448,24 +395,6 @@ mainList.addEventListener('contextmenu', function(event){
     arr_for_DB.forEach(function(item, i){
         if (item.header === event.target.innerHTML){
             if (event.ctrlKey){
-                $.ajax({
-                    method: 'POST',
-                    async: false,
-                    url: '',
-                    dataType: 'json',
-                    data: {
-                        action: 'delete',
-                        user_id: ID,
-                        header: item.header,
-                        csrfmiddlewaretoken: getCookie('csrftoken')
-                    },
-                    success: function (data) {
-                        console.log("it is deleted!");
-                    },
-                    error: function (data) {
-                        console.log("it isnt deleted");
-                    }
-                });
                 let side_window = document.querySelector(".watching");
                 let header_sideWindow = side_window.querySelector("#side___header");
                 // если удаляем цель, которая сбоку открыта,
@@ -473,24 +402,19 @@ mainList.addEventListener('contextmenu', function(event){
                 if (header_sideWindow.innerHTML === item.header){
                     side_window.style.display = "none";
                 }
-                //arr_for_DB.splice(i, 1);
+                arr_for_DB.splice(i, 1);
             }
             displayHeaders();
-            //localStorage.setItem('arr_for_DB', JSON.stringify(arr_for_DB));
+            localStorage.setItem('arr_for_DB', JSON.stringify(arr_for_DB));
         }
     });
 });
 
-let side_window = document.querySelector(".watching");
-            let header_sideWindow = side_window.querySelector("#side___header");
-            let side_goalsList = document.querySelector(".concrete__goal");
 
-            let side__close = side_window.querySelector(".side__close_modal_window");
-            let index = -1;
 mainList.addEventListener('click', function(event){
     // название нажатой цели
     let whichEl = event.target.innerHTML;
-    index = -1;
+    let index = -1;
     if (whichEl !== ""){
         for(let k = 0, flag = 1; k < arr_for_DB.length && flag === 1; k++){
             if (arr_for_DB[k].header === whichEl){
@@ -501,12 +425,11 @@ mainList.addEventListener('click', function(event){
         }
         console.log('index');
         if (index !== -1){
+            let side_window = document.querySelector(".watching");
+            let header_sideWindow = side_window.querySelector("#side___header");
+            let side_goalsList = document.querySelector(".concrete__goal");
 
- side_window = document.querySelector(".watching");
-             header_sideWindow = side_window.querySelector("#side___header");
-             side_goalsList = document.querySelector(".concrete__goal");
-
-            side__close = side_window.querySelector(".side__close_modal_window");
+            let side__close = side_window.querySelector(".side__close_modal_window");
 
             header_sideWindow.innerHTML = whichEl;
             display__side();
@@ -538,59 +461,56 @@ mainList.addEventListener('click', function(event){
             // ПЕРВАЯ ЦЕЛЬ КОРРЕКТНА, А ДАЛЬШЕ ПРИ НАЖАТИИ НА ДРУГУЮ ЦЕЛЬ 2 РАЗА item.checked = !item.checked
             // ПОТОМ 3 И ТД
             // ОШИБКУ ПОЙМАТЬ НЕ МОГУ ВОЗМОЖНО С БД БУДЕТ БЕЗ ЭТОЙ ОШИБКИ
-
-//circles(-1, -1);
-            side__close.addEventListener('click', function(){
-                side_window.style.display = "none";
-            });
-            
-        }
-    }
-});
-side_goalsList.addEventListener('change', function(event){
+            side_goalsList.addEventListener('change', function(event){
                 let idInput = event.target.getAttribute('id');
                 let stop = 1;
                 for (let k = 0; k < arr_for_DB.length && stop; k++){
                     if (arr_for_DB[k].header === header_sideWindow.innerHTML){
                         let j = parseInt(idInput.split("_")[2], 10);
 
-                                $.ajax({
-                            method: 'POST',
-                            async: false,
-                            url: '',
-                            dataType: 'json',
-                            data: {
-                                action: 'change',
-                                user_id: ID,
-                                title: arr_for_DB[k].header,
-                                podgoals: arr_for_DB[k].subpoints[j].goals_todo,
-                                index: j,
-                                csrfmiddlewaretoken: getCookie('csrftoken')
-                            },
-                            success: function (data) {
-                                console.log("it work");
-                            },
-                            error: function (data) {
-                                console.log("it didnt work");
-                            }
-                        });
+                        $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        action: 'change',
+                        user_id: ID,
+                        title: arr_for_DB[k].header,
+                        podgoals: arr_for_DB[k].subpoints[j].goals_todo,
+                        index: j,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it work");
+                    },
+                    error: function (data) {
+                        console.log("it didnt work");
+                    }
+                });
+
+displayHeaders(progressValue);
                         stop = 0;
-                        db();
-                        //displayHeaders();
+
                     }
                 }
 
+                console.log(progressValue);
                 if (progressValue[index].textContent !== "DONE!"){
                     let newStartProgressValue = progressValue[index].textContent.split("%")[0];
                     console.log("start = " + parseInt(newStartProgressValue, 10));
-                    //circles(-1, -1);
                     circles(index,  parseInt(newStartProgressValue, 10));
                 }
                 else{
-                //circles(-1, -1);
                     circles(index,  100);
                 }
-                //displayHeaders();
-
-
             });
+
+
+            side__close.addEventListener('click', function(){
+                side_window.style.display = "none";
+            });
+
+        }
+    }
+});

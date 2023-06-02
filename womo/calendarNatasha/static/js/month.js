@@ -7,24 +7,24 @@ const calendar = document.querySelector(".calendar"),
 	gotoBtn = document.querySelector(".goto-btn"),
 	dateInput = document.querySelector(".date-input"),
 	eventDay = document.querySelector(".event-day"),
-eventDate = document.querySelector(".event-date"), 
-eventContainer = document.querySelector(".events"), 
-addEventSubmit = document.querySelector(".add-event-btn"),
-addEventBtn=document.querySelector(".add-event"),
-addEventContainer = document.querySelector(".add-event-wrapper"),
-addEventCloseBtn = document.querySelector(".close"),
-addEventTitle = document.querySelector(".event-name");;
+	eventDate = document.querySelector(".event-date"),
+	eventContainer = document.querySelector(".events"),
+	addEventSubmit = document.querySelector(".add-event-btn"),
+	addEventBtn=document.querySelector(".add-event"),
+	addEventContainer = document.querySelector(".add-event-wrapper"),
+	addEventCloseBtn = document.querySelector(".close"),
+	addEventTitle = document.querySelector(".event-name");
 
 	let today = new Date();
 	let activeDay;
-	let month = today.getMonth();	
+	let month = today.getMonth();
 	let year = today.getFullYear();
 const weeks=["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
-	const monthsForToDo = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля",
+const monthsForToDo = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля",
 "Авгуса", "Сентября", "Октября", "Ноября", "Декабря"];
 const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
 "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-let eventsArr=[];
+const eventsArr=[];//для событий массивчик
 getEvents();
 console.log(eventsArr);
 
@@ -43,37 +43,36 @@ function getCookie(cname) {
 function initCalendar(){
 	const firstDay = new Date(year, month, 1);
 	const lastDay = new Date(year, month+1, 0);
-	const prevLastDay = new Date(year, month, 0);
+	const prevLastDay = new Date(year, month, 0);//последний день предыдущего месяца
 	const prevDays = prevLastDay.getDate();
 	const lastDate = lastDay.getDate();
 	const day = firstDay.getDay();
 	const nextDays = 7-lastDay.getDay();//-lastDay.getDay()-1!!
-	date.innerHTML = months[month]+" "+year;
+	date.innerHTML = months[month]+" "+year;//помещаю месяц и год заголовок
 
 	console.log(lastDay.getDay());
 	console.log(nextDays);
-	
+
 	let days = "";
-	for(let x = day-1;x>0;x--){//day!
+	for(let x = day-1;x>0;x--){//day! прибавление к массиву дней дни предыдущего месяца
 		days += `<div class="day prev-day">${prevDays-x+1}</div>`;
 	}
 
-	console.log(lastDate);
-
-	for(let i=1;i<=lastDate;i++){
+	for(let i=1;i<=lastDate;i++){//текущий месяц
 		let event=false;
-		eventsArr.forEach((eventObj)=>{
+		// console.log(eventObj.day)
+		eventsArr.forEach((eventObj)=>{//проверка на наличие события
 			if(
-				eventObj.day===i && 
+				eventObj.day===i &&
 				eventObj.month===month+1 &&
 				eventObj.year===year
 			){
 				event=true;
 			}
 		});
-			
-		if(i===new Date().getDate()
-		&& year===new Date().getFullYear() 
+
+		if(i===new Date().getDate()//сегодняшний день
+		&& year===new Date().getFullYear()
 		&& month===new Date().getMonth()){
 			activeDay=i;
 			getActiveDay(i);
@@ -86,9 +85,9 @@ function initCalendar(){
 			{
 				days += `<div class="day today active">${i}</div>`;
 			}
-			
+
 		}
-		else{
+		else{//не сегодняшний но тоже день,возможно с событием
 			if(event)
 			{
 				days += `<div class="day event">${i}</div>`;
@@ -97,21 +96,21 @@ function initCalendar(){
 			{
 				days += `<div class="day">${i}</div>`;
 			}
-			
+
 		}
 	}
-	for(let j=1;j<=nextDays;j++)
+	for(let j=1;j<=nextDays;j++)//след месяц
 	{
 		days += `<div class="day next-day">${j}</div>`;
 	}
-	daysContainer.innerHTML = days;
+	daysContainer.innerHTML = days;//пихаем дни в календарь
 	addListener();
 
 
 }
 initCalendar();
 
-function prevMonth(){
+function prevMonth(){//функции переключения по месяцам
 	month--;
 	if(month<0){
 		month=11;
@@ -130,7 +129,7 @@ function nextMonth(){
 document.getElementById('nextButton').addEventListener("click", nextMonth);
 document.getElementById('backButton').addEventListener("click", prevMonth);
 
-todayBtn.addEventListener("click", ()=>{
+todayBtn.addEventListener("click", ()=>{//выделяем сегодняшний день по кнопке
 	today = new Date();
 	month = today.getMonth();
 	year = today.getFullYear();
@@ -138,11 +137,10 @@ todayBtn.addEventListener("click", ()=>{
 });
 
 
-dateInput.addEventListener("keyup", (e)=>{
+dateInput.addEventListener("keyup", (e)=>{//обработка ввода месяца и года,чтобы верно было
 	dateInput.value=dateInput.value.replace(/[^0-9/]/g, "");
 	if(dateInput.value.length===2){
 		dateInput.value+="/";
-
 	}
 	if(dateInput.value.length>7){
 		dateInput.value = dateInput.value.slice(0,7);
@@ -155,7 +153,7 @@ dateInput.addEventListener("keyup", (e)=>{
 	}
 });
 
-gotoBtn.addEventListener("click", gotoDate);
+gotoBtn.addEventListener("click", gotoDate);//для перехода к дате
 function gotoDate(){
 	const dateArr = dateInput.value.split("/");
 	if(dateArr.length===2){
@@ -173,7 +171,7 @@ function gotoDate(){
 
 
 
-addEventBtn.addEventListener("click", ()=>{
+addEventBtn.addEventListener("click", ()=>{//активный выбранный день
 	addEventContainer.classList.toggle("active");
 });
 addEventCloseBtn.addEventListener("click", ()=>{
@@ -182,16 +180,16 @@ addEventCloseBtn.addEventListener("click", ()=>{
 document.addEventListener("click", (e)=>{
 	if(e.target!==addEventBtn && !addEventContainer.contains(e.target)){
 		addEventContainer.classList.remove("active");
-
 	}
 });
-addEventTitle.addEventListener("input", (e)=>{
+addEventTitle.addEventListener("input", (e)=>{//ограниченный ввод дел,до 50 символов
 	addEventTitle.value=addEventTitle.value.slice(0,50);
 });
 
 function addListener(){
 	const days = document.querySelectorAll(".day");
-	days.forEach((day)=>{
+	// console.log(days);
+	days.forEach((day)=>{//запускаем перебор для каждого дня
 		day.addEventListener("click", (e)=>{
 			activeDay = Number(e.target.innerHTML);
 			getActiveDay(e.target.innerHTML);
@@ -199,10 +197,9 @@ function addListener(){
 			days.forEach((day)=>{
 				day.classList.remove("active");
 			});
-
-			if(e.target.classList.contains("prev-day")){
-				prevMonth();
-				setTimeout(()=>{
+			if(e.target.classList.contains("prev-day")){//если самый глубокий элемент,вызывающий событие
+				prevMonth();//имеет класс предыдущего дня
+				setTimeout(()=>{//вызывает функцию каждые 0.1 с
 					const days = document.querySelectorAll(".day");
 					days.forEach((day)=>{
 						if(
@@ -213,7 +210,7 @@ function addListener(){
 						}
 					});
 				}, 100);
-			}
+			}//если чел нажмет на день не из этого месяца, то его перенесет в соответствующий
 			else if(e.target.classList.contains("next-day")){
 				nextMonth();
 				setTimeout(()=>{
@@ -222,7 +219,8 @@ function addListener(){
 						if(
 							!day.classList.contains("next-day") &&
 							day.innerHTML === e.target.innerHTML
-						){
+
+							){
 							day.classList.add("active");
 						}
 					});
@@ -235,15 +233,15 @@ function addListener(){
 	})
 }
 
-function getActiveDay(date){
+function getActiveDay(date){//выписывает выбранный день недели и дату
 	const day = new Date(year, month, date);
 	const dayName = day.toString().split(" ")[0];
 	const numDay=getWeekDayNumber(dayName);
-	eventDay.innerHTML=weeks[numDay-1];
 	console.log(numDay);
+	eventDay.innerHTML=weeks[numDay-1];
 	eventDate.innerHTML=date + "  " + monthsForToDo[month]+"  " + year;
 }
-function getWeekDayNumber(weekDay)
+function getWeekDayNumber(weekDay)//в помощь предыдущей функции
 {
 	var days={
 		Mon:1,
@@ -258,7 +256,7 @@ function getWeekDayNumber(weekDay)
 }
 
 function updateEvents(date){
-    $.ajax(
+	$.ajax(
     {
         type:'GET',
         async: false,
@@ -301,37 +299,51 @@ function updateEvents(date){
     });
 	let events="";
 	eventsArr.forEach((event)=>{
-		if(
-			date==event.day &&
+		if(//если событие из массива совпадает с выбранной датой
+			date===event.day &&
 			month+1===event.month &&
 			year===event.year
 		){
-			event.events.forEach((event)=>{
+			event.events.forEach((event)=>{//то заносим в массив событий
 				events+=`<div class="event">
 				<div class="title">
-					<i class="fas fa-circle"></i>
+					<i class="gg-shape-circle"></i>
 					<h3 class="event-title">${event.title}</h3>
 				</div>
 		</div>`;
 			});
 		}
 	});
-	if(events===""){
+	if(events===""){//надпись без событий
 			events=`<div class="no-event">
-			<h3>No Events</h3>
+			<h3>Нет событий</h3>
 	</div>`;
 	}
-	eventContainer.innerHTML=events;
-	saveEvents();
+	eventContainer.innerHTML=events;//события в контейнер
+	saveEvents();//сохранение в localStorage
 }
 
-addEventSubmit.addEventListener("click", ()=>{
+addEventSubmit.addEventListener("click", ()=>{//добавление нового события
 	const eventTitle=addEventTitle.value;
+	console.log("its ok&");
+	eventsArr.forEach((event) => {
+    if (
+      event.day === activeDay &&
+      event.month === month + 1 &&
+      event.year === year
+    ) {
+			console.log("its ok");
+      event.events.forEach((event) => {
+        if (event.title === eventTitle) {
+          eventExist = true;
+        }
+      });
+    }
+  });
 	const newEvent={
 		title:eventTitle
 	};
 	let eventAdded=false;
-	//console.log(eventsArr);
 	if(eventsArr.length>0){
 		eventsArr.forEach((item)=>{
 			if(
@@ -340,7 +352,6 @@ addEventSubmit.addEventListener("click", ()=>{
 				item.year===year
 			){
 				item.events.push(newEvent);
-				console.log(newEvent);
 				eventAdded=true;
 			}
 		});
@@ -357,7 +368,7 @@ addEventSubmit.addEventListener("click", ()=>{
 			events: [newEvent]
 		});
 	}
-    $.ajax({
+	$.ajax({
                     method: 'POST',
                     async: false,
                     url: '',
@@ -388,14 +399,19 @@ addEventSubmit.addEventListener("click", ()=>{
 	if(!activeDayElem.classList.contains("event")){
 		activeDayElem.classList.add("event");
 	}
+
+
+
 });
 
 
 eventContainer.addEventListener("click", (e)=>{
 	if(e.target.classList.contains("event")){
+		if(confirm("Вы действительно хотите удалить запись?")){
+			const eventTitle = e.target.children[0].children[1].innerHTML;
 
-		const eventTitle = e.target.children[0].children[1].innerHTML;
-		$.ajax({
+			console.log(eventTitle);
+			$.ajax({
                             method: 'POST',
                             async: false,
                             url: '',
@@ -416,51 +432,15 @@ eventContainer.addEventListener("click", (e)=>{
                                 console.log("it isnt deleted");
                             }
                         });
-
-		/*eventsArr.forEach((event)=>{
-			if(
-				event.day===activeDay &&
-				event.month===month+1 &&
-				event.year===year
-			){
-				event.events.forEach((item, index)=>{
-					if(item.title===eventTitle){
-						event.events.splice(index, 1);
+						const activeDayElem = document.querySelector(".day.active");
+						if(activeDayElem.classList.contains("event")){
+							activeDayElem.classList.remove("event");
+						}
 					}
-				});
-				if(event.events.length===0){
-					eventsArr.splice(eventsArr.indexOf(event), 1);
-					const activeDayElem = document.querySelector(".day.active");
-					if(activeDayElem.classList.contains("event")){
-						activeDayElem.classList.remove("event");
-						$.ajax({
-                            method: 'POST',
-                            async: false,
-                            url: '',
-                            dataType: 'json',
-                            data: {
-                                delo: '',
-                                action: 'delete',
-                                user_id: ID,
-                                day: activeDay,
-                                month: month,
-                                year: year,
-                                csrfmiddlewaretoken: getCookie('csrftoken')
-                            },
-                            success: function (data) {
-                                console.log("it is deleted!");
-                            },
-                            error: function (data) {
-                                console.log("it isnt deleted");
-                            }
-                        });
-					}
-				}
-
-
 			}
-		});*/
+		});
 		updateEvents(activeDay);
+	}
 	}
 });
 
@@ -468,7 +448,7 @@ function saveEvents(){
 	localStorage.setItem("events", JSON.stringify(eventsArr));
 }
 function getEvents(){
-    $.ajax(
+	$.ajax(
     {
         type:'GET',
         async: false,
@@ -508,9 +488,4 @@ function getEvents(){
             }
         }
     });
-	/*if(localStorage.getItem("event"===null)){
-		return;
-	}
-		eventsArr.push(...JSON.parse(localStorage.getItem("events")));*/
 }
-

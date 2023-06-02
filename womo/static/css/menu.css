@@ -1,48 +1,47 @@
 .menu{
-    display: flex;
-    flex-direction: column;
-    width: 375px;
-    height: 1000px;
-    position: fixed;
-    top: 54px;
-    left: 0;
+		grid-column: 1/2;
+		grid-row: 1/ span 4;
+		width: 100%;
+    height: 95%;
+		background: rgba(200, 112, 242, 0.7);
+		backdrop-filter: blur(25px);
+		border-radius: 0 30px 30px 0;
+		justify-self: left;
+		align-self: center;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 35% 50% 15%;
 }
-.menu .menu__wallpaper img{
-    position: fixed;
-    width: 422px;
-    height: 1000px;
-    left: -47px;
-    top: 50px;
-    border-radius: 20px;
+.first{
+	grid-column: 1/2;
+	grid-row: 1/2;
+	place-self: center;
+	text-align: center;
 }
 .menu .avatar img{
-    position: absolute;
     width: 170px;
     height: 170px;
-    left: 101px;
-    top: 71px; 
-    border-radius: 50%;   
+    border-radius: 50%;
 }
-.content{
-    padding-left: 510px;
+.link__me{
+	text-decoration: none;
 }
-
-.menu__link{
-    margin-left: 86px;
-    background: none;
+.link__me >span{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 42px;
+	color: #FFFFFF;
+	background: none;
 }
 .link{
-    position: relative;
-    display: flex;
-    height: 42px;
     text-decoration: none;
     text-transform: lowercase;
 }
 .link > img{
     width: 48px;
     height: 48px;
-    margin-right: 37px;
-    background: none;
 }
 .link >span{
     font-family: 'Roboto', serif;
@@ -54,35 +53,25 @@
     background: none;
 }
 .list{
-    margin-top: 331px;
-    padding: 0;
-    list-style-position: inside;
+		grid-column: 1/2;
+		grid-row: 2/3;
+		list-style-type: none;
+		justify-self: center;
 }
 .item{
-    margin-bottom: 48px;
+    margin-bottom: 10%;
 }
 .link:hover, .link__me:hover, .link__about:hover{
     opacity: 0.7;
 }
-.link__me >span{
-    position: absolute;
-    width: 23px;
-    height: 42px;
-    left: 171px;
-    top: 261px; 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 42px;
-    color: #FFFFFF;
-    background: none;
+.link__about{
+		grid-column: 1/2;
+		grid-row: 3/4;
+		place-self: center;
+		text-align: center;
+		text-decoration: underline solid #fff;
 }
 .link__about >span{
-    position: fixed;
-    height: 42px;
-    left: 141px;
-    top: 961px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 200;
