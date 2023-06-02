@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import Goals, Podgoals
 from django.contrib.auth.models import User
+from registration.models import CustomUser
 from django.http import JsonResponse
 import json
 from django.forms import model_to_dict
@@ -12,7 +13,7 @@ def add_goal(request):
         title = request.POST.get('title')
         podgoals = json.loads(request.POST.get('podgoals'))
         user_id = request.POST.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         goal = Goals.objects.create(user = user, goal = title)
         i = 0
         stro = 'f'
@@ -27,7 +28,7 @@ def add_goal(request):
         return JsonResponse('Goal is written', safe=False)
     elif request.GET.get('action') == 'get':
         user_id = request.GET.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         goals = Goals.objects.filter(user = user)
         goals = goals.values('goal', 'id')
         podgoals = Podgoals.objects.filter(user = user)
@@ -43,7 +44,7 @@ def add_goal(request):
         index = request.POST.get('index')
         goal = Goals.objects.get(goal = title)
         user_id = request.POST.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         change = Podgoals.objects.get(user=user, goal = goal, podgoal = podgoals, index = index)
         if change.checked == 'false':
             print("fuck)")
@@ -52,6 +53,13 @@ def add_goal(request):
             change.checked = 'false'
         change.save()
         return JsonResponse('Goal is written', safe=False)
+    elif request.method == 'POST' and request.POST.get('action') == 'delete':
+        user_id = request.POST.get('user_id')
+        user = CustomUser.objects.get(id=user_id)
+        header = request.POST.get('header')
+        change = Goals.objects.get(user = user, goal = header)
+        change.delete()
+        return JsonResponse('Deleted', safe=False)
     return render(request, 'goal_page.html')
 
 

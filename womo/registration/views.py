@@ -19,8 +19,9 @@ def profile_view(request):
 
 class RegisterView(FormView):
     form_class = RegisterForm
-    template_name = 'registration/register.html'
+    template_name = 'registration/registration.html'
     success_url = reverse_lazy("todolist:add_delo")
+
 
     def form_valid(self, form):
         form.save()

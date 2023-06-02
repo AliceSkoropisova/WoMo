@@ -99,6 +99,7 @@ function displayHeaders(progressValue){
                     }
           });
 
+
     let displayHeader = '';
     if (arr_for_DB.length > 0){
         arr_for_DB.forEach(function(item, i){
@@ -395,6 +396,24 @@ mainList.addEventListener('contextmenu', function(event){
     arr_for_DB.forEach(function(item, i){
         if (item.header === event.target.innerHTML){
             if (event.ctrlKey){
+                $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        action: 'delete',
+                        user_id: ID,
+                        header: item.header,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        console.log("it is deleted!");
+                    },
+                    error: function (data) {
+                        console.log("it isnt deleted");
+                    }
+                });
                 let side_window = document.querySelector(".watching");
                 let header_sideWindow = side_window.querySelector("#side___header");
                 // если удаляем цель, которая сбоку открыта,
@@ -402,10 +421,10 @@ mainList.addEventListener('contextmenu', function(event){
                 if (header_sideWindow.innerHTML === item.header){
                     side_window.style.display = "none";
                 }
-                arr_for_DB.splice(i, 1);
+                //arr_for_DB.splice(i, 1);
             }
             displayHeaders();
-            localStorage.setItem('arr_for_DB', JSON.stringify(arr_for_DB));
+            //localStorage.setItem('arr_for_DB', JSON.stringify(arr_for_DB));
         }
     });
 });
@@ -468,31 +487,35 @@ mainList.addEventListener('click', function(event){
                     if (arr_for_DB[k].header === header_sideWindow.innerHTML){
                         let j = parseInt(idInput.split("_")[2], 10);
 
-                        $.ajax({
-                    method: 'POST',
-                    async: false,
-                    url: '',
-                    dataType: 'json',
-                    data: {
-                        action: 'change',
-                        user_id: ID,
-                        title: arr_for_DB[k].header,
-                        podgoals: arr_for_DB[k].subpoints[j].goals_todo,
-                        index: j,
-                        csrfmiddlewaretoken: getCookie('csrftoken')
-                    },
-                    success: function (data) {
-                        console.log("it work");
-                    },
-                    error: function (data) {
-                        console.log("it didnt work");
-                    }
-                });
-
+                                $.ajax({
+                            method: 'POST',
+                            async: false,
+                            url: '',
+                            dataType: 'json',
+                            data: {
+                                action: 'change',
+                                user_id: ID,
+                                title: arr_for_DB[k].header,
+                                podgoals: arr_for_DB[k].subpoints[j].goals_todo,
+                                index: j,
+                                csrfmiddlewaretoken: getCookie('csrftoken')
+                            },
+                            success: function (data) {
+                                console.log("it work");
+                            },
+                            error: function (data) {
+                                console.log("it didnt work");
+                            }
+                        });
                         stop = 0;
-
                     }
                 }
+                mainList = document.querySelector(".list_goals");
+
+                elements_of_mainList = mainList.querySelectorAll('[id^="aimHeader_"]');
+
+                circularProgress = mainList.querySelectorAll('[id^="aimProgress_"]');
+                progressValue = mainList.querySelectorAll('[id^="aimProgressValue_"]');
 
                 console.log(progressValue);
                 if (progressValue[index].textContent !== "DONE!"){

@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from registration.models import CustomUser
 class Goals(models.Model):
-    user = models.ForeignKey(User,
+    user = models.ForeignKey(CustomUser,
                            on_delete=models.CASCADE,
                            max_length=10,
                            verbose_name='ID_user',
@@ -18,7 +18,7 @@ class Goals(models.Model):
 
 
 class Podgoals(models.Model):
-    user = models.ForeignKey(User,
+    user = models.ForeignKey(CustomUser,
                            on_delete=models.CASCADE,
                            max_length=10,
                            verbose_name='ID_user',

@@ -15,7 +15,8 @@
             <img src="{% static 'img/backgroud_menu.jpg' %}" alt="Фиолетовый фон под меню">
         </div>
         <div class="image-stack__item avatar">
-            <img src="{% static 'img/avatar.jpg'%}" alt="Собачка на автарку">
+            <img src="{{ user.avatar }}" alt="Собачка на автарку">
+
         </div>
         <!-- основное меню -->
         <ul class="menu__list list">

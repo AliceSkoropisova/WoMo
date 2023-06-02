@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
+from registration.models import CustomUser
 
 from todolist.models import ToDoList
 
@@ -16,7 +17,7 @@ def add_delo_Natasha(request):
         month = str(int(request.POST.get('month')) + 1)
         year = request.POST.get('year')
         user_id = request.POST.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         todo_instance = ToDoList.objects.create(user=user, todo=delo, important='false', day=day, month=month,
                                                 year=year)
         return JsonResponse('Delo is written', safe=False)
@@ -34,7 +35,7 @@ def add_delo_Natasha(request):
         month = str(int(request.POST.get('month')) + 1)
         year = request.POST.get('year')
         user_id = request.POST.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         change = ToDoList.objects.get(user = user, todo = delo, day = day, month = month, year = year)
         change.delete()
         return JsonResponse('Deleted', safe=False)

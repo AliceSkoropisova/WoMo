@@ -4,6 +4,7 @@ from .models import Notes
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
+from registration.models import CustomUser
 
 @login_required
 def notes_view(request):
@@ -16,7 +17,7 @@ def notes_view(request):
         return JsonResponse(data, safe=False)
     elif request.POST.get('action') == 'post':
         user_id = request.POST.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         num = request.POST.get('item')
         topic = request.POST.get('topic')
         text = request.POST.get('text')
@@ -30,7 +31,7 @@ def notes_view(request):
         return JsonResponse("Кайф!", safe=False)
     elif request.POST.get('action') == 'delite':
         user_id = request.POST.get('user_id')
-        user = User.objects.get(id=user_id)
+        user = CustomUser.objects.get(id=user_id)
         num = request.POST.get('item')
         change = Notes.objects.get(user=user,  num=num)
         change.delete()

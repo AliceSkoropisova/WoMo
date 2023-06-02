@@ -100,9 +100,9 @@ function displayMessages(){
                     che = true;
                 }
                 let newToDo = {
-                todo: data.data[i].todo,
-                important: imp,
-                checked: che
+                    todo: data.data[i].todo,
+                    important: imp,
+                    checked: che,
                 };
                 todoList.push(newToDo);
                 localStorage.setItem('todo', JSON.stringify(todoList));
@@ -164,9 +164,10 @@ function displayMessages(){
 todo.addEventListener('contextmenu', function(event){
     event.preventDefault();
     todoList.forEach(function(item, i){
-        if (item.todo === event.target.innerHTML){
+        console.log(5);
+        if (item.todo === event.target.innerHTML && flag===1){
             if (event.ctrlKey){
-                todoList.splice(i, 1);
+                //todoList.splice(i, 1);
                 $.ajax({
                     method: 'POST',
                     async: false,
@@ -191,30 +192,33 @@ todo.addEventListener('contextmenu', function(event){
                 });
             }
             else{
-                //item.important = !item.important;
-                $.ajax({
-                    method: 'POST',
-                    async: false,
-                    url: '',
-                    dataType: 'json',
-                    data: {
-                        delo: item.todo,
-                        importance: item.important,
-                        action: 'change',
-                        user_id: ID,
-                        day: headerDateArray[1],
-                        month: headerDateArray[0],
-                        year: headerDateArray[2],
-                        csrfmiddlewaretoken: getCookie('csrftoken')
-                    },
-                    success: function (data) {
-                        console.log("it is changed!");
-                    },
-                    error: function (data) {
-                        console.log("it isnt changed");
-                    }
-                });
-                //item.important = !item.important;
+                if(flag===1)
+                {
+                    //item.important = !item.important;
+                    $.ajax({
+                        method: 'POST',
+                        async: false,
+                        url: '',
+                        dataType: 'json',
+                        data: {
+                            delo: item.todo,
+                            importance: item.important,
+                            action: 'change',
+                            user_id: ID,
+                            day: headerDateArray[1],
+                            month: headerDateArray[0],
+                            year: headerDateArray[2],
+                            csrfmiddlewaretoken: getCookie('csrftoken')
+                        },
+                        success: function (data) {
+                            console.log("it is changed!");
+                        },
+                        error: function (data) {
+                            console.log("it isnt changed");
+                        }
+                    });
+                    //item.important = !item.important;
+                }
             }
 
             //localStorage.setItem('todo', JSON.stringify(todoList));
