@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/registration.css'%}">
+    <title>WoMo</title>
+</head>
+<body>
+
+    <div class="content">
+        
+        <h1 class="mainHeader">Регистрация</h1>
+
+        <form class="box" method="post">
+            {% csrf_token %}
+            <span class="choose__photo">Выберите аватарку!</span>
+
+            <div class="buttons_resume">
+                <a class="button_cancel" href="{% url 'registration:login' %}">Отмена</a>
+                <input type="submit" class="btn__createAcc" href="{% url 'registration:login' %}" value="Создать аккаунт"/>
+            </div>
+            
+            <div class="avatar">
+                <img id="cow_1" data-choosed="no" src="{% static 'img/cow_1.png'%}" alt="cow_1">
+                <img id="cow_2" data-choosed="no" src="{% static 'img/cow_2.png'%}" alt="cow_2">
+                <img id="cow_3" data-choosed="no" src="{% static 'img/cow_3.png'%}" alt="cow_3">
+                <img id="cow_4" data-choosed="no" src="{% static 'img/cow_4.png'%}" alt="cow_4">
+                <img id="cow_5" data-choosed="no" src="{% static 'img/cow_5.png'%}" alt="cow_5">
+            </div>
+
+            <div class="split">
+                <div class="descriptions">
+                    <span class="span__name">Имя</span>
+                    <span class="span__surname">Фамилия</span>
+                    <span class="span__login">Логин</span>
+                    <span class="span__password">Пароль</span>
+                    <span class="span__rep_password">Подтвердите пароль</span>
+                </div>
+    
+                <div class="input__text">
+                    <input type="text" maxlength="15" class="entry_name" name="first_name" required placeholder="Введите имя..."/>
+                    <input type="text" maxlength="15" class="entry_surname" name="last_name" required placeholder="Введите фамилию..."/>
+                    <input type="text" maxlength="15" class="entry_login" name="username" required placeholder="Введите логин..."/>
+                    <input type="password" maxlength="10" class="entry_password" name="password1" required placeholder="Введите пароль..."/>
+                    <input type="password" maxlength="10" class="entry_rep_password" name="password2" required placeholder="Подтвертите пароль..."/>
+                    <input type="hidden" name="avatar" id="avatar"></p>
+                </div>
+
+            </div>
+            {{ form.errors }}
+        </form>
+    </div>
+    <script src="{% static 'js/choose_photo.js'%}"></script>
+</body>
+</html>
