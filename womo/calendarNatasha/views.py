@@ -22,7 +22,7 @@ def add_delo_Natasha(request):
                                                 year=year)
         return JsonResponse('Delo is written', safe=False)
     elif request.method == 'GET' and request.GET.get('action') == 'get_Natasha':
-        data = ToDoList.objects.all()
+        data = ToDoList.objects.filter(user=request.GET.get('user_id'))
         dela = data.values('todo', 'day', 'month', 'year')
 
         data = {
@@ -41,7 +41,7 @@ def add_delo_Natasha(request):
         return JsonResponse('Deleted', safe=False)
     if request.path == '/calendar/':
         print('kapez')
-        return render(request, 'base.html')
+        return render(request, 'month.html')
     else:
         print('ne kapez')
         return render(request, 'try.html')

@@ -1,25 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
-
-    {% block link %}<link rel="stylesheet" href="{% static 'css/style_note_page.css' %}">
+     {% block link %}<link rel="stylesheet" href="{% static 'css/style_note_page.css'%}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet" />
-{% endblock %}
+    {% endblock %}
+
   {% block content %}
+<section class="main-part">
     <div class="mainHeader">
         <h1>Мои заметки</h1>
     </div>
 
-    <!-- <section class = "create__memo">
-        <div class="input__text">
-            <input type="text" class="add__text" placeholder="Побаловать себя вкусненьким :)"/>
-            <a href="#5" class="btn__add_note">
-                <img src="img/add_note.svg" alt="" class="add__note">
-            </a>
-        </div>
-        <div class="wrapper">
-            <ul class="todo"></ul>
-        </div>
-    </section> -->
     <div class="container">
         <a href="#5" class="btn__add_note">
             <img src="{% static 'img/add_note.svg'%}" alt="" class="add__note">
@@ -27,7 +17,8 @@
 
         <div class="notes"></div>
     </div>
-    <div id = "ID"></div>
+	</section>
+	<div id = "ID"></div>
     <script> ID = {{user.id}}; </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'js/memo_for_bd.js'%}"></script>

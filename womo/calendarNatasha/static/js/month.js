@@ -436,12 +436,9 @@ eventContainer.addEventListener("click", (e)=>{
 						if(activeDayElem.classList.contains("event")){
 							activeDayElem.classList.remove("event");
 						}
-					}
-			}
-		});
 		updateEvents(activeDay);
 	}
-	}
+}
 });
 
 function saveEvents(){

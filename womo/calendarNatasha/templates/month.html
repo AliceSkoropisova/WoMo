@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="{% static 'css/newmonth.css' %}">
 {% endblock %}
 {% block content %}
-	<section class="section-main-part">
 		<header class="main-header-block">
 			<div id="monthDisplay">
 			</div>
@@ -24,7 +23,6 @@
 				<button id="nextButton"></button>
 			</div>
 		</header>
-		<main class="main-main-block">
 			<div class="left">
 				<div class="calendar">
 				<div class="weekdays">
@@ -68,15 +66,11 @@
 							<button class="add-event-btn">Добавить!</button>
 						</div>
 					</div>
+					<button class="add-event">
+						<i class="gg-ad"></i>
+					</button>
 				</div>
-				<button class="add-event">
-					<i class="gg-ad"></i>
-				</button>
-			
-				
-		</main>
-	</section>
-	<!-- <script src="{% static 'js/script.js'%}"> </script> -->
+
 	<div id = "ID"></div>
     <script> ID = {{user.id}}; </script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
