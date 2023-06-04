@@ -545,7 +545,20 @@ addEvSubmit.addEventListener("click", ()=>{
 					events: [newEvent]
 					});	}
 	}
+console.log(month);
 
+
+	addEventTit.value="";
+	console.log(activeDay, month, week);
+	if(week==0 && activeDay>25)
+			{
+				newMonth=month-1;
+
+			}
+	else{
+		newMonth=month;
+			//updateEvents(activeDay, newMonth);
+	}
 	$.ajax({
                     method: 'POST',
                     async: false,
@@ -557,7 +570,7 @@ addEvSubmit.addEventListener("click", ()=>{
                         action: 'post',
                         user_id: ID,
                         day: activeDay,
-                        month: month,
+                        month: newMonth,
                         year: year,
                         csrfmiddlewaretoken: getCookie('csrftoken')
                     },
@@ -568,28 +581,19 @@ addEvSubmit.addEventListener("click", ()=>{
                         console.log("it didnt work");
                     }
                 });
-
-	addEventTit.value="";
-	console.log(activeDay, month, week);
-	if(week==0 && activeDay>25)
-			{
-				newMonth=month-1;
-				updateEvents(activeDay, newMonth);
-			}
-	else{
-		newMonth=month;
-			updateEvents(activeDay, newMonth);
-	}
+                updateEvents(activeDay, newMonth);
 	console.log(activeDay, newMonth);
 	const activeDayElem = document.querySelector(".day.active");
 	if(!activeDayElem.classList.contains("event")){
 		activeDayElem.classList.add("event");
 	}
 });
+
 for(let c=0;c<7;c++){
 	eventContALL[c].addEventListener("click", (e)=>{
 		if(e.target.classList.contains("event")){
 				console.log("lalalalal");
+
 				console.log(activeDay);
 				eventsArr.forEach((event)=>{
 					if(week==0 && activeDay>25)
@@ -601,7 +605,23 @@ for(let c=0;c<7;c++){
 						){
 							if(confirm("Вы действительно хотите удалить запись?")){
 								const eventTitle = e.target.children[0].children[1].innerHTML;
-								$.ajax({
+
+							event.events.forEach((item, index)=>{
+								if(item.title===eventTitle){
+									console.log("я тута");
+									event.events.splice(index, 1);
+								}
+							});
+							if(event.events.length===0){
+								eventsArr.splice(eventsArr.indexOf(event), 1);
+								const activeDayElem = document.querySelector(".day.active");
+								console.log(activeDayElem);
+								if(activeDayElem.classList.contains("event")){
+									console.log("nene");
+									activeDayElem.classList.remove("event");
+								}
+							}
+							$.ajax({
                             method: 'POST',
                             async: false,
                             url: '',
@@ -611,7 +631,7 @@ for(let c=0;c<7;c++){
                                 action: 'delete',
                                 user_id: ID,
                                 day: activeDay,
-                                month: month,
+                                month: newMonth,
                                 year: year,
                                 csrfmiddlewaretoken: getCookie('csrftoken')
                             },
@@ -622,23 +642,10 @@ for(let c=0;c<7;c++){
                                 console.log("it isnt deleted");
                             }
                         });
-							event.events.forEach((item, index)=>{
-								if(item.title===eventTitle){
-									console.log("я тута");
-									event.events.splice(index, 1);
-								}
-							});
-							if(event.events.length===0){
-								eventsArr.splice(eventsArr.indexOf(event), 1);
-								const activeDayElem = document.querySelector(".day.active");
-								console.log(activeDayElem);
-								if(activeDayElem.classList.contains("event")){
-									console.log("nene");
-									activeDayElem.classList.remove("event");
-								}
-							}
+
 						}
 				}
+
 						}
 					else
 					{
@@ -648,7 +655,7 @@ for(let c=0;c<7;c++){
 							event.year===year
 						){
 							if(confirm("Вы действительно хотите удалить запись?")){
-								const eventTitle = e.target.children[0].children[1].innerHTML;
+								 const eventTitle = e.target.children[0].children[1].innerHTML;
 							event.events.forEach((item, index)=>{
 								if(item.title===eventTitle){
 									console.log("я тута");
@@ -664,20 +671,45 @@ for(let c=0;c<7;c++){
 									activeDayElem.classList.remove("event");
 								}
 							}
+$.ajax({
+                            method: 'POST',
+                            async: false,
+                            url: '',
+                            dataType: 'json',
+                            data: {
+                                delo: eventTitle,
+                                action: 'delete',
+                                user_id: ID,
+                                day: activeDay,
+                                month: newMonth,
+                                year: year,
+                                csrfmiddlewaretoken: getCookie('csrftoken')
+                            },
+                            success: function (data) {
+                                console.log("it is deleted!");
+                            },
+                            error: function (data) {
+                                console.log("it isnt deleted");
+                            }
+                        });
 						}
 				}
+
 						}
+
 		});
 		console.log(activeDay, month);
 		if(week==0 && activeDay>25)
 		{
 			newMonth=month-1;
-			updateEvents(activeDay, newMonth);
 		}
 		else{
 			newMonth=month;
-			updateEvents(activeDay, newMonth);
+
 		}
+		console.log(newMonth);
+
+           updateEvents(activeDay, newMonth);
 		}
 		});
 	}

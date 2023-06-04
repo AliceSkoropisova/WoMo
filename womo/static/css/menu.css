@@ -80,4 +80,6 @@
     color: #ffffff;
     background: none;
 }
-
+.first, .avatar, .menu__list, .link__about, li, a, img{
+background: local;
+}

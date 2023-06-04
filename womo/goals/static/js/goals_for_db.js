@@ -473,10 +473,9 @@ mainList.addEventListener('contextmenu', function(event){
                 if (header_sideWindow.innerHTML === item.header){
                     side_window.style.display = "none";
                 }
-                //arr_for_DB.splice(i, 1);
             }
-            displayHeaders();
-            //localStorage.setItem('arr_for_DB', JSON.stringify(arr_for_DB));
+
+            location.reload();
         }
     });
 });
