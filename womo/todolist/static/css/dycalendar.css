@@ -1,3 +1,8 @@
+#dycalendar{
+    height: 100%;
+    width: 100%;
+}
+
 .dycalendar-container {
     display: inline-block;
     border : 1px solid #eee;
@@ -34,7 +39,7 @@
 }
 
 .dycalendar-month-container {
-    padding : 10px;
+    /* padding : 10px; */
     text-align : center;
     font-family : Arial;
 }
@@ -70,6 +75,7 @@
 .dycalendar-month-container .dycalendar-body table tr td {
     padding : 5px;
 }
+
 
 .dycalendar-month-container .dycalendar-today-date,
 .dycalendar-month-container .dycalendar-target-date {

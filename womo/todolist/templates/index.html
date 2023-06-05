@@ -1,58 +1,67 @@
 {% extends "base.html" %}
 {% load static %}
-    {% block link %}<link rel="stylesheet" href="{% static 'css/style.css' %}">{% endblock %}
+   {% block link %} <link rel="stylesheet" href="{% static 'css/style.css'%}">{% endblock %}
 
 
 {% block content %}
-    <h1 class="title">Планы на сегодня</h1>
+    <div class="main_part">
+        <h1 class="title">Планы на сегодня</h1>
+        <section class="content">
+            <span class="date__header">Март 19, 2023</span>
+            <a href="#4" class="turn__date-left">
+                <img src="{% static 'img/left_paging.svg'%}" alt="">
+            </a>
+            <a href="#4" class="turn__date-right">
+                <img src="{% static 'img/right_paging.svg'%}" alt="">
+            </a>
+        </section>
 
-    <section class="content">
-        <!-- <h1 class="title">Планы на сегодня</h1> -->
-        <span class="date__header">Март 19, 2023</span>
-        <a href="#4" class="turn__date-left">
-            <img src="{% static 'img/left_paging.svg'%}" alt="">
-        </a>
-        <a href="#4" class="turn__date-right">
-            <img src="{% static 'img/right_paging.svg'%}" alt="">
-        </a>
-        <!-- <span class="note__text">Заметки</span>
-        <span class="goal__text">Цели</span>
-        <img src="img/notes.jpg" alt="" class="notes">
-        <img src="img/goal.jpg" alt="" class="goals"> -->
-    </section>
+        <!-- <div class="wrapper"> -->
+            <ul class="todo"></ul>
+        <!-- </div> -->
 
-    <span class="note__text">Заметки</span>
-    <span class="goal__text">Цели</span>
-    <img src="{% static 'img/notes.jpg'%}" alt="" class="notes">
-    <img src="{% static 'img/goal.jpg'%}" alt="" class="goals">
-
-
-    <section class = "create__notes">
-        <div class="input__text">
-            <input type="text" class="add__text" placeholder="Почаще улыбаться :)"/>
+        <section class = "create__notes">
+            <div class="input__text">
+                <input type="text" class="add__text" placeholder="Почаще улыбаться :)"/>
+            </div>
             <a href="#5" class="btn__add_note">
                 <img src="{% static 'img/add_note.svg'%}" alt="" class="add__note">
             </a>
+        </section>
+    
+    </div>
+
+    <div class="side_part">
+        <span class="note__text">Заметки</span>
+        <span class="goal__text">Цели</span>
+        <a href="{% url 'notes:notes' %}" class="container__notes" >
+            <span class="note_textMain">Тут пока пусто</span>
+        </a>
+        <a href="{% url 'goals:goals' %}" class="container__goal">
+            <div class="container">
+                <div class="circular-progress_main">
+                    <span class = "progress-value_main">0%</span>
+                </div>            
+            </div>            
+            <span class="goal_textMain">Тут пока пусто</span>
+        </a>
+
+        <div class="calendar">
+            <div id="dycalendar"></div> 
+            <script src="{% static 'js/dycalendar.js'%}"></script>
+            <script>
+                    dycalendar.draw({
+                        target: '#dycalendar',
+                        type: 'month',
+                        dayformat: 'full',
+                        monthformat: 'full',
+                        highlighttargetdate: true,
+                        prevnextbutton: 'show'
+                    });
+                    
+            </script>
+            <script src="{% static 'js/calendarButtons.js'%}"></script>
         </div>
-        <div class="wrapper">
-            <ul class="todo"></ul>
-        </div>
-    </section>
-    <div class="calendar">
-           <div id="dycalendar"></div>
-           <script src="{% static 'js/dycalendar.js'%}"></script>
-           <script>
-                dycalendar.draw({
-                    target: '#dycalendar',
-                    type: 'month',
-                    dayformat: 'full',
-                    monthformat: 'full',
-                    highlighttargetdate: true,
-                    prevnextbutton: 'show'
-                });
-                
-           </script>
-           <script src="{% static 'js/calendarButtons.js'%}"></script>
     </div>
     <div id = "ID"></div>
     <script> ID = {{user.id}}; </script>

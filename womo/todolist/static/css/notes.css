@@ -1,4 +1,4 @@
-.wrapper{
+/* .wrapper{
     display: block;
     position: fixed;
     height: 727px;
@@ -6,7 +6,7 @@
     top: 200px;
     left: 510px;
     overflow-y: auto;
-}
+} */
 .todo {
     position: fixed;
     padding: 0;
@@ -14,13 +14,14 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 200;
-    font-size: 36px;
+    font-size: 3rem;
 
     display: block;
-    height: 727px;
-    width: 650px;
+    height: 600px;
+    width: 630px;
     top: 200px;
-    left: 510px;
+    left: 520px;
+
     overflow-y: auto;
 }
 .todo::-webkit-scrollbar{
@@ -32,8 +33,9 @@
     margin-bottom: 30px;
     background: #B59EC0;
 }
+
 .todo li {
-    width: 650px;
+    width: 630px;
     padding-top: 20px;
     padding-bottom: 20px;
     list-style: none;
@@ -44,9 +46,15 @@
     background: #B59EC0;
     /* opacity: 0.7; */
 }
+
 .todo label{
     background: none;
 }
 .important{
     font-weight: bold;
 }
+
+
+  
+  
+  
