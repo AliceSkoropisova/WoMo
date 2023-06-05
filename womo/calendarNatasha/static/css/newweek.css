@@ -220,8 +220,8 @@ body{
 .rectangle1{
 	grid-column: 3;
 	grid-row: 1;
-	width: 38%;
-	height: 40%;
+	width: 202px;
+	height: 67px;
 	background: #E9DAF0;
 	border-radius: 15px;
 	justify-self: end;
@@ -242,8 +242,8 @@ body{
 .rectangle2_2{
 	grid-column: 3;
 	grid-row: 1;
-	width: 38%;
-	height: 40%;
+	width: 202px;
+	height: 67px;
 	background: #D290F1;
 	border-radius: 15px;
 	place-self: center;

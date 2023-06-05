@@ -2,6 +2,8 @@
 {% load static %}
      {% block link %}<link rel="stylesheet" href="{% static 'css/style_goal_page.css'%}">{% endblock %}
     {% block content %}
+<section class="main-part">
+	<!-- <div class="main-header-part"> -->
     <div class="mainHeader">
         <h1>Мои цели</h1>
     </div>
@@ -9,7 +11,7 @@
     <a href="#5" class="btn__add_note">
         <img src="{% static 'img/add_note.svg'%}" alt="" data-modal-btn="modal__create_goal" class="add__goal">
     </a>
-
+	<!-- </div> -->
 
     <div data-modal-window="modal__create_goal" class="modal__side_goal">
         <div class="resume">
@@ -44,7 +46,7 @@
         <div class="side__modal_content">
             <div class="side__modal_inner">
                 <div class="side__modal_title">
-                    <p id="side___header">Название цели</p>             
+                    <p id="side___header">Название цели</p>
                 </div>
                 <div class="side__close_modal_window">
                     &times;
@@ -59,10 +61,9 @@
 
     <!-- список из целей -->
     <div class="list_goals"></div>
-    <div id="circle-container"></div>
+	</section>
     <div id = "ID"></div>
     <script> ID = {{user.id}}; </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
     <script src="{% static 'js/goals_for_db.js'%}"></script>
 {% endblock %}

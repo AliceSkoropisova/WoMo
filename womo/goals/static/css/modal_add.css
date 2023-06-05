@@ -103,7 +103,7 @@ p{
 }
 .add__text{
     position: relative;
-    top: 490px;
+    top: 440px;
     height: 90px;
     width: 710px;
     background: local;
@@ -133,8 +133,8 @@ p{
 }
 .add__aim{
     position: relative;
-    top: 515px;
-    margin-left: 15px;
+    top: 465px;
+    margin-left: 25px;
     background: local;
 }
 
@@ -194,8 +194,8 @@ p{
 
 .resume{
     position: absolute;
-    top: 940px;
-    left: 810px;
+    top: 850px;
+    left: 875px;
     width: 300px;
     height: 120px;
     background: local;
