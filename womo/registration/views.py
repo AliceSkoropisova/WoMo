@@ -17,6 +17,10 @@ def profile_view(request):
     return render(request, "profile/profile.html")
 
 
+def rules_view(request):
+    return render(request, "profile/intro.html")
+
+
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'registration/registration.html'

@@ -226,3 +226,85 @@ todo.addEventListener('contextmenu', function(event){
     });
     displayMessages();
 });
+
+let text_note_link = "Тут пока пусто";
+let note_textMain = document.querySelector(".note_textMain");
+function main_notes(){
+    a = 1;
+    $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        action: 'notes',
+                        user_id: ID,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        a = data.note
+                    },
+                    error: function (data) {
+                        console.log("it isnt deleted");
+                    }
+    });
+    if (a != 'null'){
+        note_textMain.innerHTML = a.topic;
+    }
+    else{
+        note_textMain.innerHTML.innerHTML = "Тут пока пусто"; //строке из бд
+    }
+}
+main_notes();
+
+let text_goal_link;
+
+let goal_textMain = document.querySelector(".goal_textMain");
+let circularProgressMain = document.querySelector('.circular-progress_main');
+let progressValueMain = document.querySelectorAll('.progress-value_main');
+let k_done_subpoint = 5;
+
+function main_circle(){
+    // в следующую строку надо передать число последнего кружочка
+    // в целях сколько процентов там выполнено в виде числа без
+    // знака процента
+    // пока для примера тут высчитывается Math.ceil(k_done_subpoint*100/10)
+    $.ajax({
+                    method: 'POST',
+                    async: false,
+                    url: '',
+                    dataType: 'json',
+                    data: {
+                        action: 'goal',
+                        user_id: ID,
+                        csrfmiddlewaretoken: getCookie('csrftoken')
+                    },
+                    success: function (data) {
+                        kol_vip = data.kol_vip;
+                        kol_vsego = data.kol_vsego;
+                        name = data.name;
+
+                    },
+                    error: function (data) {
+                        console.log("it isnt deleted");
+                    }
+    });
+
+    // сюда мы передаем название последней цели из бд в виде строки
+    if (name != 'null'){
+        text_goal_link = Math.ceil((kol_vip*100/kol_vsego));//Math.ceil(k_done_subpoint*100/10);
+        goal_textMain.innerHTML = name; //строке из бд
+        progressValueMain[0].innerHTML = `${text_goal_link}%`;
+        circularProgressMain.style.background = `conic-gradient(#7d2ae8, ${text_goal_link * 3.6}deg, #ededed 0deg)`;
+        if (progressValueMain[0].innerHTML === "100%"){
+            progressValueMain[0].innerHTML = "DONE!";
+        }
+    }
+    else{
+        goal_textMain.innerHTML = "Тут пока пусто"; //строке из бд
+        progressValueMain[0].innerHTML = `0%`;
+        circularProgressMain.style.background = `conic-gradient(#7d2ae8, ${0 * 3.6}deg, #ededed 0deg)`;
+    }
+}
+
+main_circle();

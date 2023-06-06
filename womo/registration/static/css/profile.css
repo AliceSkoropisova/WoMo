@@ -91,7 +91,7 @@ body{
 }
 .profile-name{
 	grid-row: 2/3;
-	width: 444px;
+	width: 500px;
 	height: 75px;
 	font-family: 'Roboto';
 	font-style: normal;

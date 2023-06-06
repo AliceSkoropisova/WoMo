@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import ToDoList
+from notes.models import Notes
+from goals.models import Goals, Podgoals
 from registration.models import CustomUser
 from django.http import JsonResponse
 import json
@@ -68,5 +70,41 @@ def add_delo(request):
         change.save()
         print(change.checked)
         return JsonResponse('OK', safe=False)
-    return render(request, 'index.html')
+    elif request.method == 'POST' and request.POST.get('action') == 'notes':
+        user_id = request.POST.get('user_id')
+        user = CustomUser.objects.get(id=user_id)
+        notes = Notes.objects.filter(user = user)
+        if notes.count() == 0:
+            data = {
+                'note': 'null'
+            }
+        else:
+            note = notes.values('topic', 'text')
+            noth = note[0]
+            data = {
+                'note': noth
+            }
+        return JsonResponse(data, safe=False)
+    elif request.method == 'POST' and request.POST.get('action') == 'goal':
+        user_id = request.POST.get('user_id')
+        user = CustomUser.objects.get(id=user_id)
+        goals = Goals.objects.filter(user = user)
+        goals = goals.values('goal')
+        if goals.count() == 0:
+            data = {
+                'name': 'null'
+            }
+        else:
+            goal_id = Goals.objects.get(user = user, goal=goals[0]['goal'])
 
+            kol_vsego = Podgoals.objects.filter(user = user, goal = goal_id)
+            kol_vsego = kol_vsego.count()
+            kol_vip = Podgoals.objects.filter(user = user, goal = goal_id, checked = 'true')
+            kol_vip = kol_vip.count()
+            data = {
+                'name': goals[0]['goal'],
+                'kol_vsego': kol_vsego,
+                'kol_vip': kol_vip
+            }
+        return JsonResponse(data, safe=False)
+    return render(request, 'index.html')

@@ -154,12 +154,13 @@ body{
     justify-content: space-between;
 }
 
+
 .container{
     margin-right: 20px;
     /* margin-left: 20px; */
-    width: 50%;
+    width: 100%;
     height: 100%;
-    margin-left: 15px;
+    margin-left: 5px;
     /* background: #82f616; */
     background: local;
     display: flex;
@@ -171,8 +172,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    height: 100%;
+     width: 95%;
+    height: 95%;
 
     /* border: 5px solid #ff0033; */
     border-radius: 50%;

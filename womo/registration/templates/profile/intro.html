@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/intro.css' %}">
+	<title>WoMo</title>
+</head>
+<body>
+	<a href="{% url 'registration:profile' %}" title="Закрыть" class="close">x</a>
+	<div class="container">
+		<p class="head">Мой день.</p><p class="first">Можно добавить список дел на любой день. Чтобы выбрать другое число достаточно кликнуть на мини-календарике в углу страницы. Удаление с помощью нажатия на него правой кновкой мыши+ctrl.</p>
+		<p class="head">Календарь.</p><p class="second">Более детальное планирование интересующей даты. Есть возможность переключения с месяца на неделю, возможность добавления дел. Удаление с помощью нажатия на него левой кнопкой мыши.</p>
+		<p class="head">Цели.</p><p class="third">Есть возможность поставить себе цель и отмечать маленькие шажки на пути к ее выполнению. Удаление происходит с помощью нажатия на него правой кновкой мыши+ctrl.</p>
+		<p class="head">Заметки.</p><p class="fourd">Запись любой мысли реализуется в заметках. Удаление и добавление осуществляется по соответствующим кнопкам.</p>
+	</div>
+</body>
+</html>
