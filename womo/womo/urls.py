@@ -24,12 +24,8 @@ from calendarNatasha import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('calendarNatasha.urls')),
-    #path('', views.index, name='index'),
-    #path('home/', views.add_delo, name = 'add_delo'),
-    #path('', include('notes.urls')),
     path('', include('registration.urls')),
     path('', include('todolist.urls')),
     path('', include('notes.urls')),
     path('', include('goals.urls')),
-    #path('registration/', views.register, name='register')
 ]

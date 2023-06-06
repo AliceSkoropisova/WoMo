@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import ToDoList
-from django.contrib.auth.models import User
 from registration.models import CustomUser
 from django.http import JsonResponse
 import json
@@ -63,7 +62,6 @@ def add_delo(request):
         user = CustomUser.objects.get(id=user_id)
         change = ToDoList.objects.get(user=user, todo=delo, important=importance, day=day, month=month, year=year)
         if change.checked == 'false':
-            print("fuck)")
             change.checked = 'true'
         else:
             change.checked = 'false'

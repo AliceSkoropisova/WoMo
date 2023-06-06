@@ -407,14 +407,10 @@ body{
 	padding-left: 50px;
 	color: #fff;
 	cursor: pointer;
-	background: linear-gradient(90deg, #FFCD4B, transparent);
-}
-.events .event:nth-child(even){
-	background: transparent;
-	/* background: linear-gradient(90deg, #fce3a4, transparent);*/
+	background: linear-gradient(90deg, #e4a9fcab, #ff94c8);
 }
 .events .event:hover{
-	background: linear-gradient(90deg,#f87ab7, transparent);
+	background: #d397ebab;
 }
 .events .event .title{
 	display: flex;
